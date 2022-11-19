@@ -1,0 +1,48 @@
+# 配置日志文件
+logging:
+  file:
+    # 日志文件名称
+    name: server.log
+    # 日志文件路径
+    path: logs/
+  # 详细配置
+  logback:
+    rollingpolicy:
+      max-file-size: 4KB
+      file-name-pattern: logs/server.%d{yyyy-MM-dd}.%i.log
+  # 日志输出等级
+  level:
+    root: info
+  # 设置日志的模板输出格式
+  pattern:
+    console: "%d %clr(%5p) --- [%16t] %clr(%-40.40c){red} :  %m %n"
+mybatis-plus:
+  # 实体类扫描
+  configuration:
+    # 日志策略
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      # 主键策略 雪花算法
+      id-type: assign_id
+      # 配置逻辑删除字段
+      logic-delete-field: devStatus,isDeleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      # 配置表名前缀
+      table-prefix: t_
+      # 插入策略
+      insert-strategy: not_empty
+  # 实体类扫描
+  type-aliases-package: com.raj.backend.entity
+  # Mapper.xml扫描
+  mapper-locations: classpath*:/com/raj/backend/mapper/**Mapper.xml
+# 设置文件上传大小
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+
