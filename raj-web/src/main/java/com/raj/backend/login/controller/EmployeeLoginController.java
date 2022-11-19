@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
  */
 @Slf4j
 @Controller
-public class LoginController {
+public class EmployeeLoginController {
 
     @Autowired
     private EmployeeService employeeService;

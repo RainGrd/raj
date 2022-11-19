@@ -2,6 +2,7 @@ package com.raj.front.mapper;
 
 import com.raj.entity.front.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
 * @author lenovo
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-11-19 08:49:53
 * @Entity com.raj.entity.front.User
 */
+@Repository
 public interface UserMapper extends BaseMapper<User> {
 
 }

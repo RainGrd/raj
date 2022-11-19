@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 /**
  * 菜品及套餐分类
@@ -18,6 +19,7 @@ import lombok.Data;
  * @TableName t_category
  */
 @Data
+@Component
 public class Category implements Serializable {
     /**
      * 主键

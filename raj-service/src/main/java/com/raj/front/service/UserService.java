@@ -1,5 +1,6 @@
 package com.raj.front.service;
 
+import com.raj.Vo.Result;
 import com.raj.entity.front.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -10,4 +11,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface UserService extends IService<User> {
 
+    Result login(User user);
 }

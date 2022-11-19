@@ -36,7 +36,7 @@ mybatis-plus:
       # 插入策略
       insert-strategy: not_empty
   # 实体类扫描
-  type-aliases-package: com.raj.backend.entity
+  type-aliases-package: com.raj.entity
   # Mapper.xml扫描
   mapper-locations: classpath*:/com/raj/backend/mapper/**Mapper.xml
 # 设置文件上传大小
@@ -45,4 +45,19 @@ spring:
     multipart:
       max-file-size: 200MB
       max-request-size: 200MB
+  mail:
+    #
+    host: smtp.qq.com
+    # 用户邮箱
+    username: 3403896469@qq.com
+    # 授权码
+    password: 授权码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
 
