@@ -29,12 +29,11 @@ public class EmployeeLoginController {
     /**
      * 员工登录方法
      *
-     * @param session
      * @return java.lang.Object
      */
     @PostMapping("/backend/login/login.do")
     @ResponseBody
-    public Object login(@RequestBody Employee e, HttpSession session) {
+    public Object login(@RequestBody Employee e) {
         String username = e.getUsername();
         String password = e.getPassword();
         //进行MD5的加密处理

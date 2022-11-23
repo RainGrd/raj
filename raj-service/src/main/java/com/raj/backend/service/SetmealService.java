@@ -2,6 +2,7 @@ package com.raj.backend.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.raj.dto.SetmealDto;
+import com.raj.entity.backend.Setmeal;
 
 import java.util.List;
 
@@ -29,4 +30,6 @@ public interface SetmealService {
     void modifySetmealById(SetmealDto setmealDto);
 
     int modifySetmealByStatus(Integer status, Long[] ids);
+
+    List<Setmeal> querySetmealList(Setmeal setmeal);
 }

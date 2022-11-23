@@ -1,16 +1,24 @@
+function sendMsg(data) {
+    return $axios({
+        "url": "/front/login/sendCode.do",
+        "method": 'post',
+        data
+    });
+}
+
 function loginApi(data) {
     return $axios({
-      'url': '/user/login',
-      'method': 'post',
-      data
+        'url': '/front/login/login.do',
+        'method': 'post',
+        data
     })
-  }
+}
 
-function loginoutApi() {
-  return $axios({
-    'url': '/user/loginout',
-    'method': 'post',
-  })
+function loginOutApi() {
+    return $axios({
+        'url': '/user/loginOut',
+        'method': 'post',
+    })
 }
 
   

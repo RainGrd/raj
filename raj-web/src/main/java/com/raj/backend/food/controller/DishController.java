@@ -22,8 +22,9 @@ import java.util.List;
  * FileName: DishController
  * Description: 菜品控制层
  */
-@Controller
+@RestController
 @Slf4j
+@RequestMapping("/dish")
 public class DishController {
 
 
@@ -38,8 +39,7 @@ public class DishController {
      * @param page
      * @return
      */
-    @GetMapping("/backend/food/queryDishForPage.do")
-    @ResponseBody
+    @GetMapping("/queryDishForPage.do")
     public Object queryDishForPage(int pageSize, int page, String name) {
         //输出日志
         log.info("pageSize:{},page:{},name:{}", pageSize, page, name);
@@ -54,8 +54,7 @@ public class DishController {
      * @param dishDto 菜品数据传输对象
      * @return
      */
-    @PostMapping("/backend/food/saveDish.do")
-    @ResponseBody
+    @PostMapping("/saveDish.do")
     public Object saveDish(@RequestBody DishDto dishDto) {
         log.info("需要新增的菜品数据传输对象:{}", dishDto);
         dishService.saveDishByDishDto(dishDto);
@@ -68,8 +67,7 @@ public class DishController {
      * @param id
      * @return
      */
-    @GetMapping("/backend/food/getDishById.do/{id}")
-    @ResponseBody
+    @GetMapping("/getDishById.do/{id}")
     public Object getDishById(@PathVariable Long id) {
         DishDto dishDto = dishService.queryDishById(id);
         if (dishDto == null) {
@@ -87,10 +85,9 @@ public class DishController {
      * @param ids
      * @return
      */
-    @DeleteMapping("/backend/food/deleteDishById.do")
-    @ResponseBody
+    @DeleteMapping("/deleteDishById.do")
     public Object deleteDishById(@RequestParam List<Long> ids) throws BaseException {
-        log.info("要删除的id数组:{}",ids);
+        log.info("要删除的id数组:{}", ids);
         int i = dishService.deleteDishByIds(ids);
         if (i <= 0) {
             //抛出业务异常
@@ -105,8 +102,7 @@ public class DishController {
      * @param dishDto
      * @return
      */
-    @PutMapping("/backend/food/modifyDishById.do")
-    @ResponseBody
+    @PutMapping("/modifyDishById.do")
     public Object modifyDishById(@RequestBody DishDto dishDto) throws BaseException {
         log.info("传输过来的菜品dto:{}", dishDto);
         dishService.modifyDishById(dishDto);
@@ -121,8 +117,7 @@ public class DishController {
      * @return
      * @throws BaseException
      */
-    @PostMapping("/backend/food/modifyDishByStatus.do/{status}")
-    @ResponseBody
+    @PostMapping("/modifyDishByStatus.do/{status}")
     public Object modifyDishByStatus(@PathVariable Integer status, @RequestParam("ids") Long[] ids) throws BaseException {
         log.info("要修改的菜品状态:{}", status);
         log.info("要修改菜品状态的的id数组:{}", Arrays.asList(ids));
@@ -140,8 +135,7 @@ public class DishController {
      * @param dish
      * @return
      */
-    @GetMapping("/backend/food/queryDishListByCategoryId.do")
-    @ResponseBody
+    @GetMapping("/queryDishListByCategoryId.do")
     public Object queryDishListByCategoryId(Dish dish) {
         return Result.success(dishService.queryDishListByCategoryId(dish));
     }

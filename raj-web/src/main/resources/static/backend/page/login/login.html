@@ -109,7 +109,6 @@
                         this.loading = true
                         let res = await loginApi(this.loginForm)
                         if (String(res.code) === '1') {
-                            console.log(res.msg);
                             sessionStorage.setItem("token", res.msg);
                             localStorage.setItem('userInfo', JSON.stringify(res.data))
                             window.location.href = '../../index.html'

@@ -89,12 +89,12 @@ public class CategoryController {
     /**
      * 根据type查询菜品分类
      *
-     * @param type
+     * @param category 分类实体对象
      * @return
      */
-    @RequestMapping("/backend/category/queryCategoryListByType.do")
+    @RequestMapping("/backend/category/queryCategoryListByCategory.do")
     @ResponseBody
-    public Object queryCategoryListByType(Integer type) {
-        return Result.success(categoryService.queryCategoryListByType(type));
+    public Object queryCategoryListByCategory(Category category) {
+        return Result.success(categoryService.queryCategoryListByCategory(category));
     }
 }

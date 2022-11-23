@@ -4,27 +4,23 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>raj</artifactId>
-        <groupId>com.bdqn</groupId>
+        <groupId>com.raj</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>raj-web</artifactId>
-    <version>${parent.version}</version>
+    <version>${project.parent.version}</version>
 
 
     <dependencies>
         <dependency>
-            <groupId>com.bdqn</groupId>
+            <groupId>com.raj</groupId>
             <artifactId>raj-service</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--        <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-thymeleaf</artifactId>
-                </dependency>-->
     </dependencies>
     <build>
         <plugins>

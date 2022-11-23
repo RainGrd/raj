@@ -1,0 +1,25 @@
+2022-11-23 08:21:20.071  INFO 9496 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
+2022-11-23 08:21:20.619  INFO 9496 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
+2022-11-23 08:21:20.819  INFO 9496 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/api/**, /backend/images/**, /backend/js/**, /backend/plugins/**, /backend/styles/**, /backend/favicon.ico, /backend/login/**, /common/**, /backend/page/**, /favicon.ico, /backend/index.html, /front/page/**, /front/api/**, /front/images/**, /front/js/**, /front/fonts/**, /front/styles/**, /front/favicon.ico, /front/login/**, /front/index.html]
+2022-11-23 08:21:21.576  INFO 9496 --- [main] com.raj.front.service.UserServiceTest    : Started UserServiceTest in 5.889 seconds (JVM running for 7.29)
+2022-11-23 08:21:21.914  INFO 9496 --- [main] c.r.front.service.impl.UserServiceImpl   : 验证码-------------------------------:350cc2
+2022-11-23 08:21:23.322  INFO 9496 --- [main] c.r.front.service.impl.UserServiceImpl   : 封装好的邮箱实体对象:EmailModel(sendTo=duanronggui1224@163.com, title=邮箱登录验证码, text=<h1>尊敬的客户您好！</h1><p>你的验证码为350cc2</p>, filePath=null)
+2022-11-23 08:21:23.356  INFO 9496 --- [main] com.raj.utils.EmailUtils                 : 发件人,3403896469@qq.com
+2022-11-23 08:21:23.357  INFO 9496 --- [main] com.raj.utils.EmailUtils                 : 收件人:duanronggui1224@163.com
+2022-11-23 08:21:23.357  INFO 9496 --- [main] com.raj.utils.EmailUtils                 : 邮件标题,邮箱登录验证码
+2022-11-23 08:21:23.359  INFO 9496 --- [main] com.raj.utils.EmailUtils                 : 邮件内容,<h1>尊敬的客户您好！</h1><p>你的验证码为350cc2</p>
+2022-11-23 08:21:23.968  INFO 9496 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2022-11-23 08:22:14.222  INFO 23628 --- [main] com.raj.front.service.UserServiceTest    : Starting UserServiceTest using Java 1.8.0_351 on DESKTOP-KV8ES4J with PID 23628 (started by RainGrd in D:\materials\raj\raj-entrance)
+2022-11-23 08:22:14.224  INFO 23628 --- [main] com.raj.front.service.UserServiceTest    : The following 6 profiles are active: "common", "entity", "dao", "service", "web", "entrance"
+2022-11-23 08:22:15.212  INFO 23628 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-23 08:22:15.216  INFO 23628 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-23 08:22:15.279  INFO 23628 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 0 Redis repository interfaces.
+2022-11-23 08:22:15.918  INFO 23628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 08:22:15.983  INFO 23628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 08:22:16.041  INFO 23628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 08:22:16.058  INFO 23628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.raj.config.TxAnoConfig$$EnhancerBySpringCGLIB$$88c979c2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 08:22:16.085  INFO 23628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txManger' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 08:22:16.089  INFO 23628 --- [main] com.raj.config.TxAnoConfig               : 加载事务拦截器
+2022-11-23 08:22:16.089  INFO 23628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 08:22:16.094  INFO 23628 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
+2022-11-23 08:22:16.100  INFO 23628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)

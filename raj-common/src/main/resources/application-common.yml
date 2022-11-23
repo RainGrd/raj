@@ -46,18 +46,12 @@ spring:
       max-file-size: 200MB
       max-request-size: 200MB
   mail:
-    #
+    #     邮箱域名
     host: smtp.qq.com
-    # 用户邮箱
-    username: 3403896469@qq.com
-    # 授权码
-    password: 授权码
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
+    #     用户邮箱
+    username: 3408396469@qq.com
+    #     授权码
+    password: ehxpiojrhuktdbhg
     default-encoding: UTF-8
+
 

@@ -2,8 +2,10 @@ package com.raj.interceptor;
 
 import cn.hutool.json.JSONUtil;
 import com.raj.Vo.Result;
+import com.raj.entity.front.User;
 import com.raj.holder.EmployeeHolder;
 import com.raj.entity.backend.Employee;
+import com.raj.holder.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -26,17 +28,15 @@ public class LoginInterceptor implements HandlerInterceptor {
         // 取出当前线程的员工对象
         Employee employee = EmployeeHolder.getEmployee();
         log.info("当前线程的员工对象:{}", employee);
-        if (employee == null) {
-            log.info("拦截到请求：{}", request.getRequestURI());
-//            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            //回写错误信息
-            response.getWriter().write(JSONUtil.toJsonStr(Result.error("NOTLOGIN")));
-            return false;
+        User user = UserHolder.getUser();
+        log.info("当前线程的用户对象:{}", user);
+        if (user != null || employee != null) {
+            //放行
+            return true;
         }
-        /*if (id==null) {
-            return false;
-        }*/
-        //放行
-        return true;
+        log.info("拦截到请求：{}", request.getRequestURI());
+        //回写错误信息
+        response.getWriter().write(JSONUtil.toJsonStr(Result.error("NOTLOGIN")));
+        return false;
     }
 }

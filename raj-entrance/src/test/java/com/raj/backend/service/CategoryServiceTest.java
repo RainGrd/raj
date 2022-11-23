@@ -22,7 +22,9 @@ public class CategoryServiceTest {
 
     @Test
     public void queryCategoryListByTypeTest() {
-        List<Category> categories = categoryService.queryCategoryListByType(1);
+        Category category = new Category();
+        category.setType(1);
+        List<Category> categories = categoryService.queryCategoryListByCategory(category);
         System.out.println("categories = " + categories);
     }
 }

@@ -94,7 +94,7 @@ public class SetmealServiceImpl implements SetmealService {
         LambdaQueryWrapper<Setmeal> setmealLambdaQueryWrapper = new LambdaQueryWrapper<>();
         //查询条件:id,status=1
         setmealLambdaQueryWrapper.in(ids != null, Setmeal::getId, ids);
-        setmealLambdaQueryWrapper.eq(Setmeal::getStatus, CommonEnum.Setmeal_DISH_STATUS_YES.getValue());
+        setmealLambdaQueryWrapper.eq(Setmeal::getStatus, CommonEnum.SETMEAL_DISH_STATUS_YES.getValue());
         Long count = setmealMapper.selectCount(setmealLambdaQueryWrapper);
         // 不能删除
         if (count > 0) {
@@ -161,6 +161,15 @@ public class SetmealServiceImpl implements SetmealService {
             result = setmealMapper.updateById(setmeal);
         }
         return result;
+    }
+
+    @Override
+    public List<Setmeal> querySetmealList(Setmeal setmeal) {
+        LambdaQueryWrapper<Setmeal> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //查询条件 分类Id 套餐状态
+        lambdaQueryWrapper.eq(setmeal.getCategoryId() != null, Setmeal::getCategoryId, setmeal.getCategoryId());
+        lambdaQueryWrapper.eq(setmeal.getStatus() != null, Setmeal::getStatus, setmeal.getStatus());
+        return setmealMapper.selectList(lambdaQueryWrapper);
     }
 }
 

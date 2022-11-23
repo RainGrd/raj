@@ -23,7 +23,7 @@ public class IndexController {
     public String index() {
         System.out.println("index.do");
 //        return "backend/page/index";
-        return "backend/index.html";
+        return "backend/email.html";
     }
 
 

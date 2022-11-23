@@ -24,8 +24,8 @@ public interface CategoryService {
     /**
      * 根据type来查询菜品分类集合
      *
-     * @param type
+     * @param category 分类对象
      * @return
      */
-    List<Category> queryCategoryListByType(Integer type);
+    List<Category> queryCategoryListByCategory(Category category);
 }

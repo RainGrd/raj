@@ -4,16 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>raj</artifactId>
-        <groupId>com.bdqn</groupId>
+        <groupId>com.raj</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>raj-service</artifactId>
-    <version>${parent.version}</version>
+    <version>${project.parent.version}</version>
 
     <dependencies>
         <dependency>
-            <groupId>com.bdqn</groupId>
+            <groupId>${project.parent.groupId}</groupId>
             <artifactId>raj-dao</artifactId>
         </dependency>
         <dependency>

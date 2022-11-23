@@ -21,17 +21,17 @@ public enum CommonEnum {
      */
     EMPLOYEE_LOGIN_TOKEN("employee:login:token:"),
     /**
-     * 员工登录时间
+     * 员工和用户的登录时间 时间单位:毫秒
      */
-    EMPLOYEE_LOGIN_TIME("36000"),
+    EMPLOYEE_AND_USER_LOGIN_TIME("1800000"),
     /**
      * 员工账号状态:1是启用
      */
-    EMPLOYEE_ACCOUNT_STATUS_START("1"),
+    EMPLOYEE_AND_USER_ACCOUNT_STATUS_START("1"),
     /**
-     * 员工账号状态:0是关闭
+     * 员工和用户账号状态:0是关闭
      */
-    EMPLOYEE_ACCOUNT_STATUS_CLOSE("0"),
+    EMPLOYEE_AND_USER_ACCOUNT_STATUS_CLOSE("0"),
     /**
      * 逻辑删除字段常量值:0:未删除
      */
@@ -43,11 +43,19 @@ public enum CommonEnum {
     /**
      * 套餐和菜品的状态 1:启售
      */
-    Setmeal_DISH_STATUS_YES("1"),
+    SETMEAL_DISH_STATUS_YES("1"),
     /**
      * 套餐和菜品的状态 0:停售
      */
-    Setmeal_DISH_STATUS_NO("0");
+    SETMEAL_DISH_STATUS_NO("0"),
+    /**
+     * 用户邮箱验证码
+     */
+    FRONT_USER_EMAIL_CODE("front:user:email:code:"),
+    /**
+     * 用户登录令牌
+     */
+    FRONT_USER_EMAIL_TOKEN("front:user:email:token:");
 
     private final String value;
 

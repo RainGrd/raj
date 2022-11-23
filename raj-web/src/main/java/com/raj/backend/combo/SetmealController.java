@@ -5,6 +5,7 @@ import com.raj.Vo.Result;
 import com.raj.backend.service.DishService;
 import com.raj.backend.service.SetmealService;
 import com.raj.dto.SetmealDto;
+import com.raj.entity.backend.Setmeal;
 import com.raj.exception.BaseException;
 import com.raj.exception.BaseRuntimeException;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +23,9 @@ import java.util.List;
  * FileName: SetmealController
  * Description: 套餐前端控制器
  */
-@Controller
+@RestController
 @Slf4j
+@RequestMapping("/setmeal")
 public class SetmealController {
 
 
@@ -41,8 +43,7 @@ public class SetmealController {
      * @param page
      * @return
      */
-    @GetMapping("/backend/combo/querySetmealForPage.do")
-    @ResponseBody
+    @GetMapping("/querySetmealForPage.do")
     public Object querySetmealForPage(int pageSize, int page, String name) {
         //输出日志
         log.info("pageSize:{},page:{},name:{}", pageSize, page, name);
@@ -57,8 +58,7 @@ public class SetmealController {
      * @param setmealDto 套餐菜品数据传输对象
      * @return
      */
-    @PostMapping("/backend/combo/saveSetmeal.do")
-    @ResponseBody
+    @PostMapping("/saveSetmeal.do")
     public Object saveSetmeal(@RequestBody SetmealDto setmealDto) {
         log.info("需要新增的套餐菜品数据传输对象:{}", setmealDto);
         setmealService.saveSetmealBySetmealDto(setmealDto);
@@ -71,8 +71,7 @@ public class SetmealController {
      * @param id
      * @return
      */
-    @GetMapping("/backend/combo/getSetmealById.do/{id}")
-    @ResponseBody
+    @GetMapping("/getSetmealById.do/{id}")
     public Object getSetmealById(@PathVariable Long id) {
         log.info("要查询的id:{}", id);
         SetmealDto setmealDto = setmealService.querySetmealById(id);
@@ -91,8 +90,7 @@ public class SetmealController {
      * @param ids
      * @return
      */
-    @DeleteMapping("/backend/combo/deleteSetmealById.do")
-    @ResponseBody
+    @DeleteMapping("/deleteSetmealById.do")
     public Object deleteSetmealById(@RequestParam List<Long> ids) throws BaseException {
         log.info("要删除的id数组:{}", ids);
         int i = setmealService.deleteSetmealByIds(ids);
@@ -109,8 +107,7 @@ public class SetmealController {
      * @param setmealDto
      * @return
      */
-    @PutMapping("/backend/combo/modifySetmealById.do")
-    @ResponseBody
+    @PutMapping("/modifySetmealById.do")
     public Object modifySetmealById(@RequestBody SetmealDto setmealDto) throws BaseException {
         log.info("传输过来的套餐dto:{}", setmealDto);
         setmealService.modifySetmealById(setmealDto);
@@ -125,8 +122,7 @@ public class SetmealController {
      * @return
      * @throws BaseException
      */
-    @PostMapping("/backend/combo/modifySetmealByStatus.do/{status}")
-    @ResponseBody
+    @PostMapping("/modifySetmealByStatus.do/{status}")
     public Object modifySetmealByStatus(@PathVariable Integer status, @RequestParam("ids") Long[] ids) throws BaseException {
         log.info("要修改的菜品状态:{}", status);
         log.info("要修改菜品状态的的id数组:{}", Arrays.asList(ids));
@@ -136,6 +132,12 @@ public class SetmealController {
             throw new BaseRuntimeException("系统繁忙,正在维护中！");
         }
         return Result.success();
+    }
+
+    @GetMapping("/querySetmealList.do")
+    public Object querySetmealList(Setmeal setmeal) {
+        log.info("要查询的套餐对象:{}", setmeal);
+        return setmealService.querySetmealList(setmeal);
     }
 
 }

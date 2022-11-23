@@ -34,9 +34,7 @@ public class Result {
     /**
      * 成功方法
      *
-     * @param data
-     * @param <T>
-     * @return
+     * @return com.raj.Vo.Result
      */
     public static Result success() {
         return new Result(Integer.parseInt(CommonEnum.RESULT_CODE_SUCCESS.getValue()), null, null);
@@ -47,7 +45,6 @@ public class Result {
      * 成功方法
      *
      * @param data
-     * @param <T>
      * @return
      */
     public static Result success(Object data) {
@@ -59,7 +56,6 @@ public class Result {
      *
      * @param data
      * @param msg
-     * @param <T>
      * @return
      */
     public static Result success(Object data, String msg) {
@@ -70,7 +66,6 @@ public class Result {
      * 错误信息方法
      *
      * @param msg
-     * @param <T>
      * @return
      */
     public static Result error(String msg) {

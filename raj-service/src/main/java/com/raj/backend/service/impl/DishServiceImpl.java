@@ -173,7 +173,7 @@ public class DishServiceImpl
         LambdaQueryWrapper<Dish> dishLambdaQueryWrapper = new LambdaQueryWrapper<>();
         //查询条件:id,status=1
         dishLambdaQueryWrapper.in(ids != null, Dish::getId, ids);
-        dishLambdaQueryWrapper.eq(Dish::getStatus, CommonEnum.Setmeal_DISH_STATUS_YES.getValue());
+        dishLambdaQueryWrapper.eq(Dish::getStatus, CommonEnum.SETMEAL_DISH_STATUS_YES.getValue());
         Long count = dishMapper.selectCount(dishLambdaQueryWrapper);
         // 不能删除
         if (count > 0) {

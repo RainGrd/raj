@@ -1,12 +1,9 @@
 package com.raj.utils;
 
-import javafx.scene.media.AudioClip;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.util.Properties;
 
 /**
@@ -27,7 +24,7 @@ public class PropertiesUtils {
      */
     private PropertiesUtils() {
         properties = new Properties();
-        InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream("app.properties");
+        InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream("file.properties");
         try {
             properties.load(resourceAsStream);
         } catch (IOException e) {

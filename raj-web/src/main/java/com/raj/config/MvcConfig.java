@@ -38,6 +38,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // 定义放行路径
         List<String> excludePathPatterns = new ArrayList<>();
+        //backend
         excludePathPatterns.add("/backend/api/**");
         excludePathPatterns.add("/backend/images/**");
         excludePathPatterns.add("/backend/js/**");
@@ -48,8 +49,17 @@ public class MvcConfig implements WebMvcConfigurer {
         excludePathPatterns.add("/common/**");
         excludePathPatterns.add("/backend/page/**");
         excludePathPatterns.add("/favicon.ico");
-        excludePathPatterns.add("/backend/index.html");
-        excludePathPatterns.add("/front/**");
+        excludePathPatterns.add("/backend/email.html");
+        //front
+        excludePathPatterns.add("/front/page/**");
+        excludePathPatterns.add("/front/api/**");
+        excludePathPatterns.add("/front/images/**");
+        excludePathPatterns.add("/front/js/**");
+        excludePathPatterns.add("/front/fonts/**");
+        excludePathPatterns.add("/front/styles/**");
+        excludePathPatterns.add("/front/favicon.ico");
+        excludePathPatterns.add("/front/login/**");
+        excludePathPatterns.add("/front/email.html");
         // 定义拦截路径
         List<String> addPathPatterns = new ArrayList<>();
         log.info("放行路径:{}", excludePathPatterns.toString());

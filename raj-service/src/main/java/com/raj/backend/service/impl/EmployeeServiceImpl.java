@@ -2,7 +2,6 @@ package com.raj.backend.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -12,6 +11,7 @@ import com.raj.entity.backend.Employee;
 import com.raj.backend.service.EmployeeService;
 import com.raj.backend.mapper.EmployeeMapper;
 import com.raj.holder.EmployeeHolder;
+import com.raj.utils.UUIDUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.cache.annotation.Cacheable;
@@ -54,18 +54,18 @@ public class EmployeeServiceImpl implements EmployeeService {
             return Result.error("用户或密码错误");
         }
         // 判断员工状态
-        if (employee.getStatus() == Integer.parseInt(CommonEnum.EMPLOYEE_ACCOUNT_STATUS_CLOSE.getValue())) {
+        if (employee.getStatus() == Integer.parseInt(CommonEnum.EMPLOYEE_AND_USER_ACCOUNT_STATUS_CLOSE.getValue())) {
             return Result.error("你的账号已被锁定，无法登录");
         }
         // 存在使用hutool的UUID创建随机令牌往Redis中创建
-        String token = UUID.randomUUID().toString(true);
+        String token = UUIDUtils.getUUID();
         String loginToken = CommonEnum.EMPLOYEE_LOGIN_TOKEN.getValue() + token;
         log.info("生成的token: {}", loginToken);
         log.info("生成的employee: {}", employee);
         stringRedisTemplate.opsForHash().putAll(loginToken, BeanUtil.beanToMap(employee, new HashMap<>(), CopyOptions.create().setIgnoreNullValue(true)
                 .setFieldValueEditor((fieldName, fieldValue) -> fieldValue.toString())));
 //         设置登录令牌过期时间
-        stringRedisTemplate.expire(loginToken, Long.parseLong(CommonEnum.EMPLOYEE_LOGIN_TIME.getValue()), TimeUnit.MINUTES);
+        stringRedisTemplate.expire(loginToken, Long.parseLong(CommonEnum.EMPLOYEE_AND_USER_LOGIN_TIME.getValue()), TimeUnit.MILLISECONDS);
         return Result.success(employee, token);
     }
 

@@ -6,9 +6,9 @@ import com.raj.front.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * Copyright (C), 2017-2022, RainGrd
@@ -25,20 +25,28 @@ public class UserLoginController {
     @Autowired
     private UserService userService;
 
-   /* *//**
-     * 发
+    /*
+     * 向邮箱发送验证码
      * @return
-     *//*
-    public Object getEmailCode(){
-
-    }*/
-
-    @PostMapping("/front/login.do")
+     */
+    @PostMapping("/front/login/sendCode.do")
     @ResponseBody
-    public Object login(@RequestBody User user) {
-        log.info("要登录的用户对象:{}", user);
-        userService.login(user);
-        return Result.success();
+    public Object sendCode(@RequestBody User user) {
+        userService.getEmailCode(user);
+        return Result.success("验证码已经发送成功！");
+    }
+
+    /**
+     * 用户登录请求
+     *
+     * @param map
+     * @return
+     */
+    @PostMapping("/front/login/login.do")
+    @ResponseBody
+    public Object login(@RequestBody Map<String, String> map) {
+        log.info("要登录的用户对象:{}", map);
+        return userService.login(map);
     }
 
 }
