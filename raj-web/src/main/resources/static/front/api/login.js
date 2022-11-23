@@ -1,6 +1,6 @@
 function sendMsg(data) {
     return $axios({
-        "url": "/front/login/sendCode.do",
+        "url": "/user/sendCode.do",
         "method": 'post',
         data
     });
@@ -8,7 +8,7 @@ function sendMsg(data) {
 
 function loginApi(data) {
     return $axios({
-        'url': '/front/login/login.do',
+        'url': '/user/login.do',
         'method': 'post',
         data
     })

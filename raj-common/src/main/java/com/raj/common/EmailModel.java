@@ -1,4 +1,4 @@
-package com.raj.entity.front;
+package com.raj.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

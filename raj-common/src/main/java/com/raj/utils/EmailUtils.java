@@ -1,9 +1,7 @@
 package com.raj.utils;
 
-import cn.hutool.extra.template.engine.thymeleaf.ThymeleafEngine;
-import com.raj.entity.front.EmailModel;
+import com.raj.common.EmailModel;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -31,20 +29,21 @@ public class EmailUtils {
 
     private static JavaMailSender javaMailSender;
 
-    private static String from;
+    static PropertiesUtils propertiesUtils = PropertiesUtils.getInstance();
+    /**
+     * 发件人账号
+     */
+    private static String from = propertiesUtils.getMailAccount();
+
 
     @Resource
     private TemplateEngine template;
 
     private static TemplateEngine templateEngine;
 
-    @Value("${spring.mail.username}")
-    private String fromAddress;
-
     @PostConstruct
     public void init() {
         javaMailSender = mailSender;
-        from = fromAddress;
         templateEngine = template;
     }
 
@@ -68,15 +67,16 @@ public class EmailUtils {
             helper.setSubject(emailModel.getTitle());
             log.info("邮件内容,{}", emailModel.getText());
             helper.setText(emailModel.getText(), true);
+            //发送邮件
+            javaMailSender.send(mimeMessage);
+            log.info("邮件已经发送成功");
         } catch (Exception e) {
             //打印错误信息
             log.error(e.getMessage());
             throw new RuntimeException("邮件发送失败");
         }
-        //发送邮件
-        javaMailSender.send(mimeMessage);
-        log.info("邮件已经发送成功");
     }
+
 
     /**
      * 发送模板邮件
@@ -103,13 +103,13 @@ public class EmailUtils {
             log.info("邮件内容:{}", emailModel.getText());
             String emailContent = templateEngine.process("email", context);
             helper.setText(emailContent, true);
+            //发送邮件
+            javaMailSender.send(mimeMessage);
+            log.info("邮件已经发送成功");
         } catch (Exception e) {
             //打印错误信息
             log.error(e.getMessage());
             throw new RuntimeException("邮件发送失败");
         }
-        //发送邮件
-        javaMailSender.send(mimeMessage);
-        log.info("邮件已经发送成功");
     }
 }

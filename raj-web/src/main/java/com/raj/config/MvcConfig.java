@@ -49,9 +49,9 @@ public class MvcConfig implements WebMvcConfigurer {
         excludePathPatterns.add("/common/**");
         excludePathPatterns.add("/backend/page/**");
         excludePathPatterns.add("/favicon.ico");
-        excludePathPatterns.add("/backend/email.html");
         //front
         excludePathPatterns.add("/front/page/**");
+        excludePathPatterns.add("/front/index.html");
         excludePathPatterns.add("/front/api/**");
         excludePathPatterns.add("/front/images/**");
         excludePathPatterns.add("/front/js/**");
@@ -60,9 +60,11 @@ public class MvcConfig implements WebMvcConfigurer {
         excludePathPatterns.add("/front/favicon.ico");
         excludePathPatterns.add("/front/login/**");
         excludePathPatterns.add("/front/email.html");
+        excludePathPatterns.add("/user/sendCode.do");
+        excludePathPatterns.add("/user/login.do");
         // 定义拦截路径
         List<String> addPathPatterns = new ArrayList<>();
-        log.info("放行路径:{}", excludePathPatterns.toString());
+        log.info("放行路径:{}", excludePathPatterns);
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns(addPathPatterns).excludePathPatterns(excludePathPatterns).order(1);
         registry.addInterceptor(new RefreshTokenInterceptor(stringRedisTemplate)).order(0);
     }

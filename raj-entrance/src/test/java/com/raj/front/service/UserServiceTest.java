@@ -23,9 +23,12 @@ public class UserServiceTest {
 
     @Test
     void getEmailCodeTest() {
+        long startTime = System.currentTimeMillis();
         User user = new User();
         user.setEmail("duanronggui1224@163.com");
         userService.getEmailCode(user);
+        long overTime = System.currentTimeMillis();
+        System.out.println(overTime - startTime);
     }
 
 
@@ -46,7 +49,7 @@ public class UserServiceTest {
     void loginTest() {
         Map<String, String> map = new HashMap<>();
         map.put("email", "duanronggui1224@163.com");
-        map.put("code", "155b0f");
+        map.put("code", "f2e01d");
         System.out.println(userService.login(map));
     }
 }

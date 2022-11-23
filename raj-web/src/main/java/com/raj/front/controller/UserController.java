@@ -15,11 +15,12 @@ import java.util.Map;
  * Author: lenovo
  * Date: 2022/11/19 16:16
  * FileName: LoginController
- * Description: 前台用户登录控制层
+ * Description: 前台用户控制层
  */
-@Controller
+@RestController
 @Slf4j
-public class UserLoginController {
+@RequestMapping("/user")
+public class UserController {
 
 
     @Autowired
@@ -29,8 +30,7 @@ public class UserLoginController {
      * 向邮箱发送验证码
      * @return
      */
-    @PostMapping("/front/login/sendCode.do")
-    @ResponseBody
+    @PostMapping("/sendCode.do")
     public Object sendCode(@RequestBody User user) {
         userService.getEmailCode(user);
         return Result.success("验证码已经发送成功！");
@@ -42,11 +42,17 @@ public class UserLoginController {
      * @param map
      * @return
      */
-    @PostMapping("/front/login/login.do")
-    @ResponseBody
+    @PostMapping("/login.do")
     public Object login(@RequestBody Map<String, String> map) {
         log.info("要登录的用户对象:{}", map);
         return userService.login(map);
     }
+
+    /**
+     * 根据ID查询用户
+     * @return
+     */
+//    public Object queryUserById(){
+//    }
 
 }

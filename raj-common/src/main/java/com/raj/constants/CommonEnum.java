@@ -21,9 +21,13 @@ public enum CommonEnum {
      */
     EMPLOYEE_LOGIN_TOKEN("employee:login:token:"),
     /**
-     * 员工和用户的登录时间 时间单位:毫秒
+     * 员工和用户的登录时间 30分钟 时间单位:毫秒
      */
     EMPLOYEE_AND_USER_LOGIN_TIME("1800000"),
+    /**
+     * 邮箱验证码有效时间为5分钟, 时间单位:毫秒
+     */
+    MAIL_CODE("300000"),
     /**
      * 员工账号状态:1是启用
      */

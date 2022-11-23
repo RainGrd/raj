@@ -2,38 +2,23 @@ package com.raj.front.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import cn.hutool.extra.template.engine.freemarker.FreemarkerTemplate;
-import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.raj.Vo.Result;
 import com.raj.constants.CommonEnum;
-import com.raj.entity.backend.Employee;
-import com.raj.entity.front.EmailModel;
+import com.raj.common.EmailModel;
 import com.raj.entity.front.User;
-import com.raj.exception.BaseRuntimeException;
 import com.raj.front.service.UserService;
 import com.raj.front.mapper.UserMapper;
-import com.raj.holder.UserHolder;
 import com.raj.utils.EmailUtils;
+import com.raj.utils.PropertiesUtils;
 import com.raj.utils.UUIDUtils;
 import com.raj.utils.ValidateCodeUtils;
-import freemarker.template.Template;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import javax.annotation.Resource;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -50,8 +35,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Resource
     private UserMapper userMapper;
 
-    //    @Resource
-//    private JavaMailSender mailSender;
+    PropertiesUtils propertiesUtils = PropertiesUtils.getInstance();
+
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
@@ -116,26 +101,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //收件人
         emailModel.setSendTo(user.getEmail());
         //设置标题
-        emailModel.setTitle("邮箱登录验证码");
-//        StringBuilder sb = new StringBuilder();
+        emailModel.setTitle(propertiesUtils.getMailLoginTitle());
         //获取随机产生的验证码
         String code = ValidateCodeUtils.generateValidateCodeString(6);
         log.info("验证码-------------------------------:{}", code);
         // 设置内容
-//        sb.append("<h1>尊敬的客户您好！</h1>").append("<p>你的验证码为").append(code).append("</p>");
-//        emailModel.setText(sb.toString());
         emailModel.setText(code);
         // 拼接key key+用户登录的邮箱地址
         String key = CommonEnum.FRONT_USER_EMAIL_CODE.getValue() + user.getEmail();
         //将随机产生的验证码存放到Redis中
         stringRedisTemplate.opsForValue().set(key, code);
-        //设置有效时间 时间单位:毫秒
+        //设置有效时间为5分钟 时间单位:毫秒
         stringRedisTemplate.expire(key, Long.parseLong(CommonEnum.EMPLOYEE_AND_USER_LOGIN_TIME.getValue()), TimeUnit.MILLISECONDS);
         log.info("封装好的邮箱实体对象:{}", emailModel);
         //发送邮件
-//        EmailUtils emailUtils = new EmailUtils();
-//        emailUtils.sendHtmlEmail(emailModel);
-//        EmailUtils.sendHtmlEmail(emailModel);
         EmailUtils.sendTemplateEngineEmail(emailModel);
     }
 

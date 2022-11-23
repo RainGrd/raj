@@ -1,3 +1,18 @@
-2022-11-23 12:44:52.697  INFO 9020 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 12:44:52.708  INFO 9020 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
-2022-11-23 12:44:52.714  INFO 9020 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 16:38:35.467  INFO 6436 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txManger' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 16:38:35.479  INFO 6436 --- [main] com.raj.config.TxAnoConfig               : 加载事务拦截器
+2022-11-23 16:38:35.480  INFO 6436 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 16:38:35.490  INFO 6436 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
+2022-11-23 16:38:35.520  INFO 6436 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-23 16:38:38.538  WARN 6436 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2022-11-23 16:38:38.807  INFO 6436 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
+2022-11-23 16:38:39.598  INFO 6436 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
+2022-11-23 16:38:39.881  INFO 6436 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/api/**, /backend/images/**, /backend/js/**, /backend/plugins/**, /backend/styles/**, /backend/favicon.ico, /backend/login/**, /common/**, /backend/page/**, /favicon.ico, /backend/email.html, /front/page/**, /front/index.html, /front/api/**, /front/images/**, /front/js/**, /front/fonts/**, /front/styles/**, /front/favicon.ico, /front/login/**, /front/email.html]
+2022-11-23 16:38:41.049  INFO 6436 --- [main] com.raj.front.service.UserServiceTest    : Started UserServiceTest in 9.183 seconds (JVM running for 11.243)
+2022-11-23 16:38:41.525  INFO 6436 --- [main] c.r.front.service.impl.UserServiceImpl   : 验证码-------------------------------:fd9d26
+2022-11-23 16:38:43.011  INFO 6436 --- [main] c.r.front.service.impl.UserServiceImpl   : 封装好的邮箱实体对象:EmailModel(sendTo=duanronggui1224@163.com, title=瑞吉外卖邮箱登录验证码, text=fd9d26, filePath=null)
+2022-11-23 16:38:43.070  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 发件人:3408396469@qq.com
+2022-11-23 16:38:43.072  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 收件人:duanronggui1224@163.com
+2022-11-23 16:38:43.073  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 邮件标题:瑞吉外卖邮箱登录验证码
+2022-11-23 16:38:43.075  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 邮件内容:fd9d26
+2022-11-23 16:38:49.347  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 邮件已经发送成功
+2022-11-23 16:38:49.505  INFO 6436 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...

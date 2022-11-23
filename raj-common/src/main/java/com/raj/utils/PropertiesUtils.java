@@ -24,12 +24,12 @@ public class PropertiesUtils {
      */
     private PropertiesUtils() {
         properties = new Properties();
-        InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream("file.properties");
+        InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream("app.properties");
         try {
             properties.load(resourceAsStream);
         } catch (IOException e) {
-            e.printStackTrace();
             log.info("加载app.properties报错,错误信息{}", e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -60,22 +60,40 @@ public class PropertiesUtils {
     /*************************************************************************/
 
     /**
-     * 是否调试模式
+     * 是否开启调试模式
      */
     public Boolean isDebug() {
-        return "true".equals(properties.getProperty("isDebug"));
+        return "true".equals(properties.getProperty("file.isDebug"));
     }
 
     public String getAttachmentServer() {
-        return properties.getProperty("attachmentServer");
+        return properties.getProperty("file.attachmentServer");
     }
 
     public String getAttachmentPath() {
-        return properties.getProperty("attachmentPath");
+        return properties.getProperty("file.attachmentPath");
     }
 
     public String getAttachmentGainPath() {
-        return properties.getProperty("attachmentGainPath");
+        return properties.getProperty("file.attachmentGainPath");
+    }
+
+    /**
+     * 获取邮箱标题
+     *
+     * @return
+     */
+    public String getMailLoginTitle() {
+        return properties.getProperty("mail.login.title");
+    }
+
+    /**
+     * 获取邮箱账号
+     *
+     * @return
+     */
+    public String getMailAccount() {
+        return properties.getProperty("mail.account");
     }
 
 }

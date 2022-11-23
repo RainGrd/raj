@@ -41,6 +41,9 @@ mybatis-plus:
   mapper-locations: classpath*:/com/raj/backend/mapper/**Mapper.xml
 # 设置文件上传大小
 spring:
+  devtools:
+    restart:
+      enabled: true
   servlet:
     multipart:
       max-file-size: 200MB
