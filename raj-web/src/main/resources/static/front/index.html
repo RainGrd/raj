@@ -63,14 +63,15 @@
                         <div class="divBottom"><span>￥</span><span>{{item.price / 100}}</span></div>
                         <div class="divNum">
                             <div class="divSubtract" v-if="item.number > 0">
-                                <img src="./images/subtract.png" @click.prevent.stop="subtractCart(item)"/>
+                                <img src="./images/subtract.png" @click.prevent.stop="subtractCart(item)" alt=""/>
                             </div>
                             <div class="divDishNum">{{item.number}}</div>
-                            <div class="divTypes" v-if="item.flavors && item.flavors.length > 0 && !item.number "
-                                 @click.prevent.stop="chooseFlavorClick(item)">选择规格
+                            <div class="divTypes" v-if="item.flavors && item.flavors.length > 0 && !item.number"
+                                 @click.prevent.stop="chooseFlavorClick(item)">
+                                选择规格
                             </div>
                             <div class="divAdd" v-else>
-                                <img src="./images/add.png" @click.prevent.stop="addCart(item)"/>
+                                <img src="./images/add.png" @click.prevent.stop="addCart(item)" alt=""/>
                             </div>
                         </div>
                     </div>
@@ -140,11 +141,11 @@
                 </div>
                 <div class="divNum">
                     <div class="divSubtract">
-                        <img src="./images/subtract.png" @click="cartNumberSubtract(item)"/>
+                        <img src="./images/subtract.png" @click="cartNumberSubtract(item)" alt=""/>
                     </div>
                     <div class="divDishNum">{{item.number}}</div>
                     <div class="divAdd">
-                        <img src="./images/add.png" @click="cartNumAdd(item)"/>
+                        <img src="./images/add.png" @click="cartNumAdd(item)" alt=""/>
                     </div>
                 </div>
                 <div class="divSplit"></div>
@@ -180,7 +181,7 @@
                      @click="chooseFlavorClick(detailsDialog.item)">选择规格
                 </div>
                 <div class="divAdd" v-else>
-                    <img src="./images/add.png" @click="addCart(detailsDialog.item)"/>
+                    <img src="./images/add.png" @click="addCart(detailsDialog.item)" alt=""/>
                 </div>
             </div>
         </div>
@@ -199,7 +200,7 @@
             <div class="item" v-for="(item,index) in setMealDialog.item.list" :key="index">
                 <el-image :src="imgPathConvert(item.image)">
                     <div slot="error" class="image-slot">
-                        <img src="./images/noImg.png"/>
+                        <img src="./images/noImg.png" alt="" width="172" height="172"/>
                     </div>
                 </el-image>
                 <div class="divSubTitle">{{item.name + '(' + item.copies + '份)' }}
@@ -220,7 +221,7 @@
                 </div>
                 <div class="divDishNum">{{setMealDialog.item.number}}</div>
                 <div class="divAdd" v-if="setMealDialog.item.number">
-                    <img src="./images/add.png" @click="addCart(setMealDialog.item)"/>
+                    <img src="./images/add.png" @click="addCart(setMealDialog.item)" alt="" width="72" height="72"/>
                 </div>
                 <div class="addCart" @click="addCart(setMealDialog.item)" v-if="!setMealDialog.item.number">加入购物车</div>
             </div>
@@ -377,7 +378,9 @@
                     const cartData = this.cartData
                     if (dishList.length > 0 && cartData.length > 0) {
                         dishList.forEach(dish => {
+                            console.log(dish);
                             cartData.forEach(cart => {
+                                console.log(cart)
                                 if (dish.id === cart.setmealId) {
                                     dish.number = cart.number
                                 }
@@ -420,6 +423,7 @@
                             dish.number = res.data.number
                         }
                     })
+                    console.log(this.setMealDialog.show)
                     if (this.setMealDialog.show) {
                         item.number = res.data.number
                     }
@@ -559,7 +563,7 @@
                         dishFlavor.push(item.dishFlavor)
                     } else {
                         flag = false
-                        Notify({type: 'warning', message: '请选择' + item.name});
+                        this.$notify({type: 'warning', message: '请选择' + item.name});
                     }
                 })
                 if (flag) {

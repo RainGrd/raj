@@ -30,6 +30,8 @@ import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKN
 public class JacksonObjectMapper extends ObjectMapper {
 
 
+    private static final long serialVersionUID = -2530894554138470216L;
+
     public JacksonObjectMapper() {
         super();
         //收到未知属性时不报异常

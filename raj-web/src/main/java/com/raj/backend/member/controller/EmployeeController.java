@@ -18,8 +18,9 @@ import javax.annotation.Resource;
  * FileName: EmployeeController
  * Description: 员工控制层
  */
-@Controller
+@RestController
 @Slf4j
+@RequestMapping("/employee")
 public class EmployeeController {
 
 
@@ -32,8 +33,7 @@ public class EmployeeController {
      * @param employee
      * @return
      */
-    @PostMapping("/backend/member/insertEmployee.do")
-    @ResponseBody
+    @PostMapping("/insertEmployee.do")
     public Object insertEmployee(@RequestBody Employee employee) throws BaseException {
         System.out.println("employee = " + employee);
         int i = employeeService.saveEmployee(employee);
@@ -51,12 +51,11 @@ public class EmployeeController {
      * @param name     员工名称
      * @return java.lang.Object
      */
-    @GetMapping("/backend/member/queryEmployeeForPage.do")
-    @ResponseBody
+    @GetMapping("/queryEmployeeForPage.do")
     public Object queryEmployeeForPage(int pageSize, int page, String name) {
         //输出日志
         log.info("pageSize:{},page:{},name:{}", pageSize, page, name);
-        System.out.println("page:"+page);
+        System.out.println("page:" + page);
         Page<Employee> employeePage = employeeService.queryEmployeeListForPage(pageSize, page, name);
         log.info("输出查询的分页数据:{}", employeePage.getRecords().toString());
         return Result.success(employeePage);
@@ -68,8 +67,7 @@ public class EmployeeController {
      * @param employee
      * @return
      */
-    @PutMapping("/backend/member/updateEmployee.do")
-    @ResponseBody
+    @PutMapping("/updateEmployee.do")
     public Object updateEmployee(@RequestBody Employee employee) {
         log.info("要修改的员工对象:{}", employee);
         int modifyEmployee = employeeService.modifyEmployee(employee);
@@ -85,8 +83,7 @@ public class EmployeeController {
      * @param id
      * @return
      */
-    @GetMapping("/backend/member/selectById.do/{id}")
-    @ResponseBody
+    @GetMapping("/selectById.do/{id}")
     public Object selectById(@PathVariable Long id) {
         return Result.success(employeeService.queryEmployeeById(id));
     }

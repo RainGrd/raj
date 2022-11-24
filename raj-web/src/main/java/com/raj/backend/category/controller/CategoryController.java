@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.*;
  * FileName: CategoryController
  * Description: 分类控制层
  */
-@Controller
+@RestController
 @Slf4j
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
@@ -30,8 +31,7 @@ public class CategoryController {
      * @param page
      * @return
      */
-    @GetMapping("/backend/category/queryCategoryForPage.do")
-    @ResponseBody
+    @GetMapping("/queryCategoryForPage.do")
     public Object queryCategoryForPage(int pageSize, int page) {
         //输出日志
         log.info("pageSize:{},page:{}", pageSize, page);
@@ -46,8 +46,7 @@ public class CategoryController {
      * @param category
      * @return
      */
-    @PostMapping("/backend/category/saveCategory.do")
-    @ResponseBody
+    @PostMapping("/saveCategory.do")
     public Object saveCategory(@RequestBody Category category) {
         log.info("需要新增的分类对象:{}", category);
         int i = categoryService.saveCategory(category);
@@ -63,8 +62,7 @@ public class CategoryController {
      * @param id
      * @return
      */
-    @DeleteMapping("/backend/category/deleteCategoryById.do")
-    @ResponseBody
+    @DeleteMapping("/deleteCategoryById.do")
     public Object deleteCategoryById(@RequestParam("ids") Long id) {
         log.info("删除的分类Id:{}", id);
         return categoryService.deleteCategoryById(id);
@@ -76,8 +74,7 @@ public class CategoryController {
      * @param category
      * @return
      */
-    @PutMapping("/backend/category/modifyCategoryById.do")
-    @ResponseBody
+    @PutMapping("/modifyCategoryById.do")
     public Object modifyCategoryById(@RequestBody Category category) {
         int i = categoryService.modifyCategoryById(category);
         if (i < 0) {
@@ -92,9 +89,9 @@ public class CategoryController {
      * @param category 分类实体对象
      * @return
      */
-    @RequestMapping("/backend/category/queryCategoryListByCategory.do")
-    @ResponseBody
+    @GetMapping("/queryCategoryListByCategory.do")
     public Object queryCategoryListByCategory(Category category) {
+        log.info("菜品分类对象:{}", category);
         return Result.success(categoryService.queryCategoryListByCategory(category));
     }
 }

@@ -26,8 +26,8 @@ public class GlobalExceptionHandler {
      *
      * @return
      */
-    @ExceptionHandler(BaseException.class)
-    public Result exceptionHandler(BaseException ex) {
+    @ExceptionHandler(Exception.class)
+    public Result exceptionHandler(Exception ex) {
         log.error("异常错误信息:{}", ex.getMessage());
         return Result.error("系统繁忙,正在维护中！");
     }
@@ -38,8 +38,8 @@ public class GlobalExceptionHandler {
      * @param ex
      * @return
      */
-    @ExceptionHandler(Exception.class)
-    public Result runtimeExceptionHandler(Exception ex) {
+    @ExceptionHandler(BaseRuntimeException.class)
+    public Result runtimeExceptionHandler(BaseRuntimeException ex) {
         log.error("异常错误信息:{}", ex.getMessage());
         return Result.error(ex.getMessage());
     }

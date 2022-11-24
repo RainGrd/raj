@@ -2,7 +2,9 @@ package com.raj.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.raj.entity.backend.Employee;
+import com.raj.entity.front.User;
 import com.raj.holder.EmployeeHolder;
+import com.raj.holder.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.context.annotation.Configuration;
@@ -29,21 +31,32 @@ public class MybatisPlusFillHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         //获取线程的员工对象
         Employee employee = EmployeeHolder.getEmployee();
+        // 获取线程的用户对象
+        User user = UserHolder.getUser();
+        //获取id值
+        Long id = employee != null ? employee.getId() : user.getId();
+        log.info("获取到的id值:{}", id);
         log.info("start insert fill ...");
         log.info("获取线程的员工对象:{}", employee);
+        log.info("获取线程的用户对象:{}", user);
         metaObject.setValue("createTime", LocalDateTime.now());
         metaObject.setValue("updateTime", LocalDateTime.now());
-        metaObject.setValue("createUser", employee.getId());
-        metaObject.setValue("updateUser", employee.getId());
+        metaObject.setValue("createUser", id);
+        metaObject.setValue("updateUser", id);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         //获取线程的员工对象
         Employee employee = EmployeeHolder.getEmployee();
+        // 获取线程的用户对象
+        User user = UserHolder.getUser();
+        //获取id值
+        Long id = employee != null ? employee.getId() : user.getId();
+        log.info("获取到的id值:{}", id);
         log.info("start update fill ...");
         log.info("获取线程的员工对象:{}", employee);
         metaObject.setValue("updateTime", LocalDateTime.now());
-        metaObject.setValue("updateUser", employee.getId());
+        metaObject.setValue("updateUser", id);
     }
 }

@@ -24,7 +24,6 @@
             config.headers['authorization'] = token; // 让每个请求携带自定义token 请根据实际情况自行修改
             // return config;
         }
-        console.log("请求拦截器:" + config)
         // get请求映射params参数
         if (config.method === 'get' && config.params) {
             let url = config.url + '?';
@@ -49,12 +48,13 @@
         }
         return config
     }, error => {
+        console.log(error)
         Promise.reject(error)
     })
 
     // 响应拦截器
     service.interceptors.response.use(res => {
-            console.log('---响应拦截器---', res)
+            // console.log('---响应拦截器---', res)
             if (res.data.code === 0 && res.data.msg === 'NOTLOGIN') {// 返回登录页面
                 window.top.location.href = '/front/page/login.html'
             } else {

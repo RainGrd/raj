@@ -82,6 +82,6 @@ public class DishFlavor implements Serializable {
     /**
      * 是否删除
      */
-    @TableLogic(value = "is_deleted")
+    @TableLogic(value = "is_deleted", delval = "1")
     private Integer isDeleted;
 }

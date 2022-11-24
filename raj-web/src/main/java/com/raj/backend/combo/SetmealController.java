@@ -134,10 +134,16 @@ public class SetmealController {
         return Result.success();
     }
 
+    /**
+     * 查询套餐集合
+     *
+     * @param setmeal
+     * @return
+     */
     @GetMapping("/querySetmealList.do")
     public Object querySetmealList(Setmeal setmeal) {
         log.info("要查询的套餐对象:{}", setmeal);
-        return setmealService.querySetmealList(setmeal);
+        return Result.success(setmealService.querySetmealList(setmeal));
     }
 
 }

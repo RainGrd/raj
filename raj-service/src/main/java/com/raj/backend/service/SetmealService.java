@@ -31,5 +31,5 @@ public interface SetmealService {
 
     int modifySetmealByStatus(Integer status, Long[] ids);
 
-    List<Setmeal> querySetmealList(Setmeal setmeal);
+    List<SetmealDto> querySetmealList(Setmeal setmeal);
 }

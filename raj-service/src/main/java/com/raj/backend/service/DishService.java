@@ -40,6 +40,6 @@ public interface DishService  //extends IService<Dish>
 
      int modifyDishByStatus(Integer status,Long[] ids);
 
-     List<Dish> queryDishListByCategoryId(Dish dish);
+     List<DishDto> queryDishListByCategoryId(Dish dish);
 
  }

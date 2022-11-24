@@ -27,7 +27,7 @@
         <el-input placeholder="请输入邮箱" v-model="form.email" maxlength='30'></el-input>
         <div class="divSplit"></div>
         <el-input placeholder=" 请输入验证码" v-model="form.code" maxlength='20'></el-input>
-        <span @click='getCode' :disabled="totalTime===60">{{content}}</span>
+        <span @click='getCode' :disabled="totalTime<60">{{content}}</span>
     </div>
     <div class="divMsg" v-if="msgFlag">邮箱输入不正确，请重新输入</div>
     <el-button type="primary" :class="{btnSubmit:1===1,btnNoPhone:!form.email,btnPhone:form.email}" @click="btnLogin">

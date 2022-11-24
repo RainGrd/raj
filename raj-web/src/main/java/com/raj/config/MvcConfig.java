@@ -39,27 +39,11 @@ public class MvcConfig implements WebMvcConfigurer {
         // 定义放行路径
         List<String> excludePathPatterns = new ArrayList<>();
         //backend
-        excludePathPatterns.add("/backend/api/**");
-        excludePathPatterns.add("/backend/images/**");
-        excludePathPatterns.add("/backend/js/**");
-        excludePathPatterns.add("/backend/plugins/**");
-        excludePathPatterns.add("/backend/styles/**");
-        excludePathPatterns.add("/backend/favicon.ico");
-        excludePathPatterns.add("/backend/login/**");
+        excludePathPatterns.add("/backend/**");
         excludePathPatterns.add("/common/**");
-        excludePathPatterns.add("/backend/page/**");
         excludePathPatterns.add("/favicon.ico");
         //front
-        excludePathPatterns.add("/front/page/**");
-        excludePathPatterns.add("/front/index.html");
-        excludePathPatterns.add("/front/api/**");
-        excludePathPatterns.add("/front/images/**");
-        excludePathPatterns.add("/front/js/**");
-        excludePathPatterns.add("/front/fonts/**");
-        excludePathPatterns.add("/front/styles/**");
-        excludePathPatterns.add("/front/favicon.ico");
-        excludePathPatterns.add("/front/login/**");
-        excludePathPatterns.add("/front/email.html");
+        excludePathPatterns.add("/front/**");
         excludePathPatterns.add("/user/sendCode.do");
         excludePathPatterns.add("/user/login.do");
         // 定义拦截路径
@@ -69,6 +53,11 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new RefreshTokenInterceptor(stringRedisTemplate)).order(0);
     }
 
+    /**
+     * MVC 消息转换器
+     *
+     * @param converters
+     */
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         log.info("加载消息转换器...");

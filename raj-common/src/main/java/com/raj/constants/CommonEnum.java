@@ -59,7 +59,16 @@ public enum CommonEnum {
     /**
      * 用户登录令牌
      */
-    FRONT_USER_EMAIL_TOKEN("front:user:email:token:");
+    FRONT_USER_EMAIL_TOKEN("front:user:email:token:"),
+
+    /**
+     * 外卖地址的默认值 1:设置为默认地址
+     */
+    ADDRESS_BOOK_IS_DEFAULT_YES("1"),
+    /**
+     * 外卖地址的默认值 0:不设置为默认地址
+     */
+    ADDRESS_BOOK_IS_DEFAULT_NO("0");
 
     private final String value;
 

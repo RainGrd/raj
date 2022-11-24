@@ -2,6 +2,7 @@ package com.raj.backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.raj.backend.mapper.DishFlavorMapper;
 import com.raj.entity.backend.Category;
 import com.raj.entity.backend.Dish;
 import com.raj.entity.backend.DishFlavor;
@@ -43,6 +44,9 @@ public class DishServiceImpl
 
     @Autowired
     private CategoryMapper categoryMapper;
+
+    @Autowired
+    private DishFlavorMapper dishFlavorMapper;
 
 
     @Override
@@ -200,11 +204,35 @@ public class DishServiceImpl
     }
 
     @Override
-    public List<Dish> queryDishListByCategoryId(Dish dish) {
+    public List<DishDto> queryDishListByCategoryId(Dish dish) {
         LambdaQueryWrapper<Dish> dishLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        //添加查询条件
+        //查询条件 分类id和菜品状态
         dishLambdaQueryWrapper.eq(Dish::getCategoryId, dish.getCategoryId());
-        return dishMapper.selectList(dishLambdaQueryWrapper);
+        dishLambdaQueryWrapper.eq(Dish::getStatus, dish.getStatus());
+        // 排序条件
+        dishLambdaQueryWrapper.orderByDesc(Dish::getUpdateTime);
+        //查询出来的菜品集合
+        List<Dish> dishes = dishMapper.selectList(dishLambdaQueryWrapper);
+        //创建dishdto集合
+        List<DishDto> dishDtoList = new ArrayList<>();
+        dishDtoList = dishes.stream().map((item) -> {
+            DishDto dishDto = new DishDto();
+            //拷贝属性
+            BeanUtils.copyProperties(item, dishDto);
+            LambdaQueryWrapper<DishFlavor> dishFlavorLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            dishFlavorLambdaQueryWrapper.eq(DishFlavor::getDishId, item.getId());
+            dishFlavorLambdaQueryWrapper.eq(DishFlavor::getIsDeleted, CommonEnum.IS_DELETED_NO.getValue());
+            List<DishFlavor> dishFlavors = dishFlavorMapper.selectList(dishFlavorLambdaQueryWrapper);
+            //设置菜品的口味数据
+            dishDto.setFlavors(dishFlavors);
+            //根据分类id查询分类名称
+            Category category = categoryMapper.selectById(item.getCategoryId());
+            //设置分类名称
+            dishDto.setCategoryName(category.getName());
+            return dishDto;
+        }).collect(Collectors.toList());
+        log.info("dishDto集合:{}", dishDtoList);
+        return dishDtoList;
     }
 
 

@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -164,13 +165,37 @@ public class SetmealServiceImpl implements SetmealService {
     }
 
     @Override
-    public List<Setmeal> querySetmealList(Setmeal setmeal) {
+    public List<SetmealDto> querySetmealList(Setmeal setmeal) {
         LambdaQueryWrapper<Setmeal> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         //查询条件 分类Id 套餐状态
         lambdaQueryWrapper.eq(setmeal.getCategoryId() != null, Setmeal::getCategoryId, setmeal.getCategoryId());
         lambdaQueryWrapper.eq(setmeal.getStatus() != null, Setmeal::getStatus, setmeal.getStatus());
-        return setmealMapper.selectList(lambdaQueryWrapper);
+        //排序条件
+        lambdaQueryWrapper.orderByDesc(Setmeal::getUpdateTime);
+        List<Setmeal> setmealList = setmealMapper.selectList(lambdaQueryWrapper);
+        //套餐数据传输对象集合
+        List<SetmealDto> setmealDtoList = null;
+        setmealDtoList = setmealList.stream().map((item) -> {
+            SetmealDto setmealDto = new SetmealDto();
+            //拷贝属性
+            BeanUtils.copyProperties(item, setmealDto);
+            //根据id套餐id查询关联套餐的菜品
+            LambdaQueryWrapper<SetmealDish> setmealDishLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            setmealDishLambdaQueryWrapper.eq(SetmealDish::getSetmealId, setmealDto.getId());
+            List<SetmealDish> list = setmealDishService.list(setmealDishLambdaQueryWrapper);
+            setmealDto.setSetmealDishes(list);
+            //根据分类id查询分类
+            Long categoryId = setmealDto.getCategoryId();
+            Category category = categoryMapper.selectById(categoryId);
+            //封装套餐名称
+            setmealDto.setCategoryName(category.getName());
+            return setmealDto;
+        }).collect(Collectors.toList());
+        log.info("套餐数据传输对象集合:{}", setmealDtoList);
+        return setmealDtoList;
     }
+
+
 }
 
 

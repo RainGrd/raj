@@ -1,7 +1,7 @@
 //获取所有的菜品分类
 function categoryListApi() {
     return $axios({
-        'url': '/backend/category/queryCategoryListByCategory.do',
+        'url': '/category/queryCategoryListByCategory.do',
         'method': 'get',
     })
 }
@@ -36,7 +36,7 @@ function cartListApi(data) {
 //购物车中添加商品
 function addCartApi(data) {
     return $axios({
-        'url': '/shoppingCart/add',
+        'url': '/shoppingCart/saveShoppingCart.do',
         'method': 'post',
         data
     })
@@ -45,8 +45,8 @@ function addCartApi(data) {
 //购物车中修改商品
 function updateCartApi(data) {
     return $axios({
-        'url': '/shoppingCart/sub',
-        'method': 'post',
+        'url': '/shoppingCart/modifyShoppingCart.do',
+        'method': 'put',
         data
     })
 }
@@ -54,7 +54,7 @@ function updateCartApi(data) {
 //删除购物车的商品
 function clearCartApi() {
     return $axios({
-        'url': '/shoppingCart/clean',
+        'url': '/shoppingCart/deleteShoppingCart.do',
         'method': 'delete',
     })
 }

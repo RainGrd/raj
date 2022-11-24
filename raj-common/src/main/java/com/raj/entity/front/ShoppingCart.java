@@ -1,12 +1,21 @@
 package com.raj.entity.front;
 
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Data;
 
 /**
  * 购物车
+ *
  * @TableName t_shopping_cart
  */
 @Data
@@ -14,53 +23,67 @@ public class ShoppingCart implements Serializable {
     /**
      * 主键
      */
+    @TableId(value = "id")
     private Long id;
 
     /**
      * 名称
      */
+    @TableField(value = "name")
     private String name;
 
     /**
      * 图片
      */
+    @TableField(value = "image")
     private String image;
 
     /**
      * 主键
      */
+    @TableField(value = "user_id")
     private Long userId;
 
     /**
      * 菜品id
      */
+    @TableField(value = "dish_id")
     private Long dishId;
 
     /**
      * 套餐id
      */
+    @TableField(value = "setmeal_id")
     private Long setmealId;
 
     /**
      * 口味
      */
+    @TableField(value = "dish_flavor")
     private String dishFlavor;
 
     /**
      * 数量
      */
+    @TableField(value = "number")
     private Integer number;
 
     /**
      * 金额
      */
-    private BigDecimal amount;
+    @TableField(value = "amount")
+    private Float amount;
 
     /**
      * 创建时间
      */
+    @TableField(value = "create_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/HUNAN")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createTime;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -76,15 +99,15 @@ public class ShoppingCart implements Serializable {
         }
         ShoppingCart other = (ShoppingCart) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getImage() == null ? other.getImage() == null : this.getImage().equals(other.getImage()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getDishId() == null ? other.getDishId() == null : this.getDishId().equals(other.getDishId()))
-            && (this.getSetmealId() == null ? other.getSetmealId() == null : this.getSetmealId().equals(other.getSetmealId()))
-            && (this.getDishFlavor() == null ? other.getDishFlavor() == null : this.getDishFlavor().equals(other.getDishFlavor()))
-            && (this.getNumber() == null ? other.getNumber() == null : this.getNumber().equals(other.getNumber()))
-            && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
+                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+                && (this.getImage() == null ? other.getImage() == null : this.getImage().equals(other.getImage()))
+                && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+                && (this.getDishId() == null ? other.getDishId() == null : this.getDishId().equals(other.getDishId()))
+                && (this.getSetmealId() == null ? other.getSetmealId() == null : this.getSetmealId().equals(other.getSetmealId()))
+                && (this.getDishFlavor() == null ? other.getDishFlavor() == null : this.getDishFlavor().equals(other.getDishFlavor()))
+                && (this.getNumber() == null ? other.getNumber() == null : this.getNumber().equals(other.getNumber()))
+                && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
     }
 
     @Override

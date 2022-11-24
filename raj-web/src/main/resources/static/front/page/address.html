@@ -139,7 +139,7 @@
                 if (item.id) {
                     const res = await setDefaultAddressApi({id: item.id})
                     if (res.code === 1) {
-                        this.initData()
+                        await this.initData()
                     } else {
                         this.$message.error(res.msg)
                     }

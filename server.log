@@ -1,22 +1,20 @@
-2022-11-23 20:28:36.777  INFO 15680 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 20:28:36.799  INFO 15680 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.raj.config.TxAnoConfig$$EnhancerBySpringCGLIB$$455c9b92] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 20:28:36.812  INFO 15680 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txManger' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 20:28:36.815  INFO 15680 --- [main] com.raj.config.TxAnoConfig               : 加载事务拦截器
-2022-11-23 20:28:36.815  INFO 15680 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 20:28:36.817  INFO 15680 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
-2022-11-23 20:28:36.818  INFO 15680 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 20:28:37.160  INFO 15680 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
-2022-11-23 20:28:37.161  INFO 15680 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.0].
-2022-11-23 20:28:37.161  INFO 15680 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
-2022-11-23 20:28:37.161  INFO 15680 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2022-11-23 20:28:37.164  INFO 15680 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1q  5 Jul 2022]
-2022-11-23 20:28:37.174  INFO 15680 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-23 20:28:37.175  INFO 15680 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-23 20:28:37.407  INFO 15680 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-11-23 20:28:37.407  INFO 15680 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1861 ms
-2022-11-23 20:28:38.810  WARN 15680 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
-2022-11-23 20:28:39.029  INFO 15680 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
-2022-11-23 20:28:39.202  INFO 15680 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
-2022-11-23 20:28:39.306  INFO 15680 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/api/**, /backend/images/**, /backend/js/**, /backend/plugins/**, /backend/styles/**, /backend/favicon.ico, /backend/login/**, /common/**, /backend/page/**, /favicon.ico, /front/page/**, /front/index.html, /front/api/**, /front/images/**, /front/js/**, /front/fonts/**, /front/styles/**, /front/favicon.ico, /front/login/**, /front/email.html, /user/sendCode.do, /user/login.do]
-2022-11-23 20:28:39.759  INFO 15680 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
-2022-11-23 20:28:39.768  INFO 15680 --- [main] com.raj.RajEntranceApplication           : Started RajEntranceApplication in 4.767 seconds (JVM running for 5.993)
+2022-11-24 20:27:40.446  INFO 20280 --- [http-nio-8081-exec-7] com.raj.utils.BootFileUtils              : 关闭流...
+2022-11-24 20:27:52.044  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:3ae7054b7a5d43f584e71e7dfeea6844
+2022-11-24 20:27:52.044  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:false
+2022-11-24 20:27:52.046  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的员工:{}
+2022-11-24 20:27:52.047  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的用户:{phone=15873461176, sex=0, name=RainGrd, id=1594943486342266881, avatar=user.png, idNumber=430481200512240371, email=duanronggui1224@163.com, status=1}
+2022-11-24 20:27:52.050  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : user:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
+2022-11-24 20:27:52.052  INFO 20280 --- [http-nio-8081-exec-10] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
+2022-11-24 20:27:52.052  INFO 20280 --- [http-nio-8081-exec-10] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
+2022-11-24 20:27:52.052  INFO 20280 --- [http-nio-8081-exec-10] c.r.f.controller.ShoppingCartController  : 要保存的商品:ShoppingCart [Hash = 1309076123, id=null, name=辣椒炒肉, image=6a23c45659b24112921e662d8d772ae1.jpg, userId=null, dishId=1592835367508152321, setmealId=null, dishFlavor=微辣,不要蒜, number=null, amount=14.0, createTime=null, serialVersionUID=1]
+2022-11-24 20:27:52.055  INFO 20280 --- [http-nio-8081-exec-10] c.r.f.s.impl.ShoppingCartServiceImpl     : 查询出来的购物车对象:null
+2022-11-24 20:27:52.058  INFO 20280 --- [http-nio-8081-exec-10] c.r.f.s.impl.ShoppingCartServiceImpl     : 返回的数据:ShoppingCart [Hash = 2088169641, id=1595756080879747073, name=辣椒炒肉, image=6a23c45659b24112921e662d8d772ae1.jpg, userId=1594943486342266881, dishId=1592835367508152321, setmealId=null, dishFlavor=微辣,不要蒜, number=null, amount=14.0, createTime=2022-11-24T20:27:52.055, serialVersionUID=1]
+2022-11-24 20:27:52.066  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:3ae7054b7a5d43f584e71e7dfeea6844
+2022-11-24 20:27:52.066  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:false
+2022-11-24 20:27:52.067  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的员工:{}
+2022-11-24 20:27:52.068  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的用户:{phone=15873461176, sex=0, name=RainGrd, id=1594943486342266881, avatar=user.png, idNumber=430481200512240371, email=duanronggui1224@163.com, status=1}
+2022-11-24 20:27:52.070  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : user:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
+2022-11-24 20:27:52.070  INFO 20280 --- [http-nio-8081-exec-5] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
+2022-11-24 20:27:52.070  INFO 20280 --- [http-nio-8081-exec-5] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
+2022-11-24 20:29:35.931  INFO 20280 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-11-24 20:29:35.937  INFO 20280 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

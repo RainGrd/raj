@@ -1,7 +1,7 @@
 // 查询列表接口
 const getCategoryPage = (params) => {
     return $axios({
-        url: '/backend/category/queryCategoryForPage.do',
+        url: '/category/queryCategoryForPage.do',
         method: 'get',
         params
     })
@@ -18,7 +18,7 @@ const queryCategoryById = (id) => {
 // 删除当前列的接口
 const deleCategory = (ids) => {
     return $axios({
-        url: '/backend/category/deleteCategoryById.do',
+        url: '/category/deleteCategoryById.do',
         method: 'delete',
         params: {ids}
     })
@@ -27,7 +27,7 @@ const deleCategory = (ids) => {
 // 修改接口
 const editCategory = (params) => {
     return $axios({
-        url: '/backend/category/modifyCategoryById.do',
+        url: '/category/modifyCategoryById.do',
         method: 'put',
         data: {...params}
     })
@@ -36,7 +36,7 @@ const editCategory = (params) => {
 // 新增接口
 const addCategory = (params) => {
     return $axios({
-        url: '/backend/category/saveCategory.do',
+        url: '/category/saveCategory.do',
         method: 'post',
         data: {...params}
     })

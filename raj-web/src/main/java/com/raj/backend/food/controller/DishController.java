@@ -137,6 +137,7 @@ public class DishController {
      */
     @GetMapping("/queryDishListByCategoryId.do")
     public Object queryDishListByCategoryId(Dish dish) {
+        log.info("菜品对象:{}", dish);
         return Result.success(dishService.queryDishListByCategoryId(dish));
     }
 }
