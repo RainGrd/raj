@@ -72,7 +72,7 @@ public class ShoppingCart implements Serializable {
      * 金额
      */
     @TableField(value = "amount")
-    private Float amount;
+    private BigDecimal amount;
 
     /**
      * 创建时间

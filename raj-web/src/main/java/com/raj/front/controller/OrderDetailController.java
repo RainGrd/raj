@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author RainGrd
  */
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orderDetail")
 public class OrderDetailController {
 
 

@@ -173,7 +173,7 @@
             </div>
             <div class="right">
                 <div class="divSubtract" v-if="detailsDialog.item.number > 0">
-                    <img src="./images/subtract.png" @click="subtractCart(detailsDialog.item)"/>
+                    <img src="./images/subtract.png" @click="subtractCart(detailsDialog.item)" alt=""/>
                 </div>
                 <div class="divDishNum">{{detailsDialog.item.number}}</div>
                 <div class="divTypes"
@@ -217,7 +217,7 @@
             </div>
             <div class="right">
                 <div class="divSubtract" v-if="setMealDialog.item.number > 0">
-                    <img src="./images/subtract.png" @click="subtractCart(setMealDialog.item)"/>
+                    <img src="./images/subtract.png" @click="subtractCart(setMealDialog.item)" alt=""/>
                 </div>
                 <div class="divDishNum">{{setMealDialog.item.number}}</div>
                 <div class="divAdd" v-if="setMealDialog.item.number">
@@ -378,9 +378,7 @@
                     const cartData = this.cartData
                     if (dishList.length > 0 && cartData.length > 0) {
                         dishList.forEach(dish => {
-                            console.log(dish);
                             cartData.forEach(cart => {
-                                console.log(cart)
                                 if (dish.id === cart.setmealId) {
                                     dish.number = cart.number
                                 }
@@ -402,7 +400,7 @@
                 }
             },
             //菜单中往购物车中添加商品
-            async addCart(item) {
+            addCart: async function (item) {
                 let params = {
                     amount: item.price / 100,//金额
                     dishFlavor: item.dishFlavor,//口味  如果没有传undefined
@@ -412,7 +410,19 @@
                     image: item.image
                 }
                 if (Array.isArray(item.flavors)) {//表示是菜品
-                    params.dishId = item.id
+                    params.dishId = item.id;
+                    //如果dishFlavor是undefined,则添加的flavors的dishFlavor
+                    if (params.dishFlavor === undefined) {
+                        let dishFlavor = '';
+                        let suffix = ',';
+                        for (let i = 0; i < item.flavors.length; i++) {
+                            if (i === item.flavors.length - 1) {
+                                suffix = '';
+                            }
+                            dishFlavor += item.flavors[i].dishFlavor + suffix
+                        }
+                        params.dishFlavor = dishFlavor;
+                    }
                 } else {//表示套餐 套餐没有口味
                     params.setmealId = item.id
                 }
@@ -427,7 +437,7 @@
                     if (this.setMealDialog.show) {
                         item.number = res.data.number
                     }
-                    this.getCartData()
+                    this.getCartData();
                 } else {
                     this.$notify({type: 'warning', message: res.msg});
                 }
@@ -453,6 +463,7 @@
                     if (this.setMealDialog.show) {
                         item.number = (res.data.number === 0 ? undefined : res.data.number)
                     }
+                    //刷新数据
                     this.getCartData()
                 } else {
                     this.$notify({type: 'warning', message: res.msg});
@@ -482,7 +493,6 @@
                             dish.number = res.data.number
                         }
                     })
-                    console.log(this.dishList)
                     this.getCartData()
                 } else {
                     this.$notify({type: 'warning', message: res.msg});
