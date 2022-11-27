@@ -1,11 +1,1 @@
-2022-11-25 21:54:20.977  INFO 17024 --- [http-nio-8081-exec-2] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
-2022-11-25 21:54:20.985  INFO 17024 --- [http-nio-8081-exec-7] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-25 21:54:20.986  INFO 17024 --- [http-nio-8081-exec-7] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-25 21:54:20.989  INFO 17024 --- [http-nio-8081-exec-7] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-25 21:54:20.990  INFO 17024 --- [http-nio-8081-exec-7] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-25 21:54:20.990  INFO 17024 --- [http-nio-8081-exec-7] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
-2022-11-25 21:54:20.990  INFO 17024 --- [http-nio-8081-exec-7] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:null
-2022-11-25 21:54:20.990  INFO 17024 --- [http-nio-8081-exec-7] com.raj.interceptor.LoginInterceptor     : 拦截到请求：/error
-2022-11-25 21:54:21.000  INFO 17024 --- [http-nio-8081-exec-2] c.r.f.service.impl.OrdersServiceImpl     : 查询的订单分页对象:[OrdersDto(userName=RainGrd, phone=15873461176, address=耒阳小水镇豪坡村5组, consignee=段荣贵, orderDetails=[OrderDetail [Hash = -394044830, id=1596131761958490113, name=辣椒炒肉, image=6a23c45659b24112921e662d8d772ae1.jpg, orderId=1596131761903964161, dishId=1592835367508152321, setmealId=null, dishFlavor=微辣,不要葱, number=2, amount=14.00, serialVersionUID=1], OrderDetail [Hash = 114466079, id=1596131761975267329, name=米饭, image=ee04a05a-1230-46b6-8ad5-1a95b140fff3.png, orderId=1596131761903964161, dishId=1413385247889891330, setmealId=null, dishFlavor=null, number=2, amount=2.00, serialVersionUID=1], OrderDetail [Hash = -1184371889, id=1596131761975267330, name=商务套餐A计划, image=4676054e86c24ae697cac3c49c90c783.jpg, orderId=1596131761903964161, dishId=null, setmealId=1593215584672206850, dishFlavor=null, number=1, amount=286.00, serialVersionUID=1]])]
-2022-11-25 21:54:26.998  INFO 17024 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-25 21:54:27.003  INFO 17024 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-11-27 09:57:34.566  INFO 8100 --- [lettuce-eventExecutorLoop-1-4] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was /192.168.139.101:6379

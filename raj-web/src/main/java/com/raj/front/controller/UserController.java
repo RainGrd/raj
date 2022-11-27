@@ -1,13 +1,18 @@
 package com.raj.front.controller;
 
 import com.raj.Vo.Result;
+import com.raj.constants.CommonEnum;
 import com.raj.entity.front.User;
 import com.raj.front.service.UserService;
+import com.raj.holder.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -25,6 +30,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
 
     /*
      * 向邮箱发送验证码
@@ -48,11 +57,15 @@ public class UserController {
         return userService.login(map);
     }
 
-    /**
-     * 根据ID查询用户
-     * @return
-     */
-//    public Object queryUserById(){
-//    }
+    @PostMapping("/loginOut.do")
+    public Object loginOut(HttpServletRequest request) {
+        log.info("用户退出登录...");
+        //删除存放在本地线程池的用户
+        UserHolder.removeUser();
+        //删除存放在Redis中的用户
+        stringRedisTemplate.delete(CommonEnum.FRONT_USER_EMAIL_TOKEN.getValue() + request.getHeader("authorization"));
+        //返回结果
+        return Result.success();
+    }
 
 }

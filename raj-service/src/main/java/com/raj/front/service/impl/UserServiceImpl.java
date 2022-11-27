@@ -122,6 +122,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public int saveUser(User user) {
         return userMapper.insert(user);
     }
+
 }
 
 

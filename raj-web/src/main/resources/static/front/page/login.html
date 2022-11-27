@@ -134,10 +134,9 @@
                     const res = await loginApi({email: this.form.email, code: this.form.code})
                     this.loading = false
                     if (res.code === 1) {
-                        console.log(res)
-                        // sessionStorage.setItem("userEmail", this.form.email)
-                        sessionStorage.setItem("token", res.msg)
-                        sessionStorage.setItem("user", JSON.stringify(res.user))
+                        console.log(res);
+                        sessionStorage.setItem("token", res.msg);
+                        sessionStorage.setItem("user", JSON.stringify(res.data));
                         window.requestAnimationFrame(() => {
                             window.location.href = '../index.html'
                         })
