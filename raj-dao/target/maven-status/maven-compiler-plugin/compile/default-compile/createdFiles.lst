@@ -1,0 +1,14 @@
+com\raj\front\mapper\ShoppingCartMapper.class
+com\raj\backend\mapper\DishFlavorMapper.class
+com\raj\backend\mapper\DishMapper.class
+com\raj\config\MybatisPlusConfig.class
+com\raj\front\mapper\OrdersMapper.class
+com\raj\config\MybatisPlusConfig$1.class
+com\raj\backend\mapper\EmployeeMapper.class
+com\raj\backend\mapper\SetmealMapper.class
+com\raj\backend\mapper\SetmealDishMapper.class
+com\raj\backend\mapper\CategoryMapper.class
+com\raj\front\mapper\AddressBookMapper.class
+com\raj\front\mapper\UserMapper.class
+com\raj\config\RedisConfig.class
+com\raj\front\mapper\OrderDetailMapper.class
