@@ -68,7 +68,27 @@ public enum CommonEnum {
     /**
      * 外卖地址的默认值 0:不设置为默认地址
      */
-    ADDRESS_BOOK_IS_DEFAULT_NO("0");
+    ADDRESS_BOOK_IS_DEFAULT_NO("0"),
+    /**
+     * 订单状态:代付款
+     */
+    ORDERS_STATUS_PAYMENT("1"),
+    /**
+     * 订单状态:待派送
+     */
+    ORDERS_STATUS_DELIVERED("2"),
+    /**
+     * 订单状态:已派送
+     */
+    ORDERS_STATUS_DISPATCH("3"),
+    /**
+     * 订单状态:已完成
+     */
+    ORDERS_STATUS_COMPLETED("4"),
+    /**
+     * 订单状态:已取消
+     */
+    ORDERS_STATUS_CLOSE("5");
 
     private final String value;
 

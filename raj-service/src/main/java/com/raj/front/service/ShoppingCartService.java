@@ -23,5 +23,5 @@ public interface ShoppingCartService extends IService<ShoppingCart> {
 
     ShoppingCart modifyShoppingCart(ShoppingCart shoppingCart);
 
-    int deleteShoppingCart(ShoppingCart shoppingCart);
+    int deleteShoppingCart();
 }

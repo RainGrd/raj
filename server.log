@@ -1,20 +1,2 @@
-2022-11-24 20:27:40.446  INFO 20280 --- [http-nio-8081-exec-7] com.raj.utils.BootFileUtils              : 关闭流...
-2022-11-24 20:27:52.044  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:3ae7054b7a5d43f584e71e7dfeea6844
-2022-11-24 20:27:52.044  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:false
-2022-11-24 20:27:52.046  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的员工:{}
-2022-11-24 20:27:52.047  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的用户:{phone=15873461176, sex=0, name=RainGrd, id=1594943486342266881, avatar=user.png, idNumber=430481200512240371, email=duanronggui1224@163.com, status=1}
-2022-11-24 20:27:52.050  INFO 20280 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : user:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
-2022-11-24 20:27:52.052  INFO 20280 --- [http-nio-8081-exec-10] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
-2022-11-24 20:27:52.052  INFO 20280 --- [http-nio-8081-exec-10] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
-2022-11-24 20:27:52.052  INFO 20280 --- [http-nio-8081-exec-10] c.r.f.controller.ShoppingCartController  : 要保存的商品:ShoppingCart [Hash = 1309076123, id=null, name=辣椒炒肉, image=6a23c45659b24112921e662d8d772ae1.jpg, userId=null, dishId=1592835367508152321, setmealId=null, dishFlavor=微辣,不要蒜, number=null, amount=14.0, createTime=null, serialVersionUID=1]
-2022-11-24 20:27:52.055  INFO 20280 --- [http-nio-8081-exec-10] c.r.f.s.impl.ShoppingCartServiceImpl     : 查询出来的购物车对象:null
-2022-11-24 20:27:52.058  INFO 20280 --- [http-nio-8081-exec-10] c.r.f.s.impl.ShoppingCartServiceImpl     : 返回的数据:ShoppingCart [Hash = 2088169641, id=1595756080879747073, name=辣椒炒肉, image=6a23c45659b24112921e662d8d772ae1.jpg, userId=1594943486342266881, dishId=1592835367508152321, setmealId=null, dishFlavor=微辣,不要蒜, number=null, amount=14.0, createTime=2022-11-24T20:27:52.055, serialVersionUID=1]
-2022-11-24 20:27:52.066  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:3ae7054b7a5d43f584e71e7dfeea6844
-2022-11-24 20:27:52.066  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:false
-2022-11-24 20:27:52.067  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的员工:{}
-2022-11-24 20:27:52.068  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的用户:{phone=15873461176, sex=0, name=RainGrd, id=1594943486342266881, avatar=user.png, idNumber=430481200512240371, email=duanronggui1224@163.com, status=1}
-2022-11-24 20:27:52.070  INFO 20280 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : user:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
-2022-11-24 20:27:52.070  INFO 20280 --- [http-nio-8081-exec-5] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
-2022-11-24 20:27:52.070  INFO 20280 --- [http-nio-8081-exec-5] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:User(id=1594943486342266881, name=RainGrd, phone=15873461176, sex=0, idNumber=430481200512240371, avatar=user.png, status=1, email=duanronggui1224@163.com)
-2022-11-24 20:29:35.931  INFO 20280 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-24 20:29:35.937  INFO 20280 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-11-27 10:16:32.943  INFO 8100 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-11-27 10:16:32.951  INFO 8100 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

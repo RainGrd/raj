@@ -63,18 +63,19 @@ public class ShoppingCartController {
         log.info("要修改的购物车商品:{}", shoppingCart);
         //调用方法进行修改
         ShoppingCart cart = shoppingCartService.modifyShoppingCart(shoppingCart);
-        return cart == null ? Result.error("修改失败!!!") : Result.success("修改成功!!!");
+        return cart == null ? Result.error("已经没有菜品和套餐了") : Result.success(cart);
     }
 
+    /**
+     * 清空购物车
+     *
+     * @return
+     */
     @DeleteMapping("/deleteShoppingCart.do")
-    public Object deleteShoppingCart(@RequestBody ShoppingCart shoppingCart) {
-        log.info("要删除的购物车商品:{}", shoppingCart);
+    public Object deleteShoppingCart() {
         //调用删除方法
-        int i = shoppingCartService.deleteShoppingCart(shoppingCart);
-        if (i <= 0) {
-            return Result.error("删除失败!!!");
-        }
-        return Result.success("成功删除!!!");
+        int i = shoppingCartService.deleteShoppingCart();
+        return i <= 0 ? Result.error("删除失败!!!") : Result.success("成功删除!!!");
     }
 
 }

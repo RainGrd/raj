@@ -50,8 +50,6 @@ public class ShoppingCartServiceImpl extends ServiceImpl<ShoppingCartMapper, Sho
         shoppingCartLambdaQueryWrapper.eq(dishId != null, ShoppingCart::getDishId, dishId);
         //添加到购物车的是套餐
         shoppingCartLambdaQueryWrapper.eq(shoppingCart.getSetmealId() != null, ShoppingCart::getSetmealId, shoppingCart.getSetmealId());
-        //判断菜品或者的套餐是否相等
-        shoppingCartLambdaQueryWrapper.eq(shoppingCart.getDishFlavor() != null, ShoppingCart::getDishFlavor, shoppingCart.getDishFlavor());
         //进行查询
         ShoppingCart cart = shoppingCartMapper.selectOne(shoppingCartLambdaQueryWrapper);
         log.info("查询出来的购物车对象:{}", cart);
@@ -60,30 +58,63 @@ public class ShoppingCartServiceImpl extends ServiceImpl<ShoppingCartMapper, Sho
             cart.setNumber(cart.getNumber() + 1);
             //进行更新
             shoppingCartMapper.updateById(cart);
+        } else {
+            //如果不存在,则添加数据
+            //封装数据
+            shoppingCart.setNumber(1);
+            shoppingCart.setUserId(userId);
+            shoppingCart.setCreateTime(LocalDateTime.now());
+            //插入数据
+            shoppingCartMapper.insert(shoppingCart);
+            // 拼接数据
+            cart = shoppingCart;
         }
-        //如果不存在,则添加数据
-        //封装数据
-        shoppingCart.setUserId(userId);
-        shoppingCart.setCreateTime(LocalDateTime.now());
-        //插入数据
-        shoppingCartMapper.insert(shoppingCart);
-        //返回数据
-        cart = shoppingCart;
         log.info("返回的数据:{}", cart);
+        //返回数据
         return cart;
     }
 
     @Override
     public ShoppingCart modifyShoppingCart(ShoppingCart shoppingCart) {
+        //获取当前用户
+        Long userId = UserHolder.getUser().getId();
+        // 获取菜品Id
         Long dishId = shoppingCart.getDishId();
-        LambdaUpdateWrapper<ShoppingCart> shoppingCartLambdaUpdateWrapper = new LambdaUpdateWrapper<>();
-        shoppingCartMapper.updateById(shoppingCart);
-        return shoppingCart;
+        //查询是当前用户
+        LambdaQueryWrapper<ShoppingCart> shoppingCartLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        shoppingCartLambdaQueryWrapper.eq(ShoppingCart::getUserId, userId);
+        //查询当前菜品或者套餐是否存在于购物车中
+        //添加购物车的是菜品
+        shoppingCartLambdaQueryWrapper.eq(dishId != null, ShoppingCart::getDishId, dishId);
+        //添加到购物车的是套餐
+        shoppingCartLambdaQueryWrapper.eq(shoppingCart.getSetmealId() != null, ShoppingCart::getSetmealId, shoppingCart.getSetmealId());
+        //进行查询
+        ShoppingCart cart = shoppingCartMapper.selectOne(shoppingCartLambdaQueryWrapper);
+        log.info("查询出来的购物车对象:{}", cart);
+        if (cart != null) {
+            //如果存在，判断是否是最后一条
+            if (cart.getNumber() - 1 <= 0) {
+                //删除此条数据
+                shoppingCartMapper.deleteById(cart);
+            }
+            // 不是则在原来的基础上加一
+            cart.setNumber(cart.getNumber() - 1);
+            //进行更新
+            shoppingCartMapper.updateById(cart);
+        }
+        log.info("返回的数据:{}", cart);
+        //返回数据
+        return cart;
     }
 
     @Override
-    public int deleteShoppingCart(ShoppingCart shoppingCart) {
-        return shoppingCartMapper.deleteById(shoppingCart);
+    public int deleteShoppingCart() {
+        //获取当前用户id
+        Long userId = UserHolder.getUser().getId();
+        LambdaQueryWrapper<ShoppingCart> shoppingCartLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //清空当前用户的购物车
+        shoppingCartLambdaQueryWrapper.eq(userId != null, ShoppingCart::getUserId, userId);
+        return shoppingCartMapper.delete(shoppingCartLambdaQueryWrapper);
     }
 }
 
