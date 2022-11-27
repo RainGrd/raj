@@ -23,10 +23,13 @@
             <i class="el-icon-arrow-left" @click="goBack"></i>个人中心
         </div>
         <div class="divUser">
-            <img src="./../images/headPage.png"/>
+            <img src="./../images/headPage.png" alt=""/>
             <div class="desc">
-                <div class="divName">林之迷 <img src="./../images/women.png"/></div>
-                <div class="divPhone">{{userPhone}}</div>
+                <div class="divName">{{form.name}}
+                    <img v-if="form.sex===1" src="./../images/women.png" alt=""/>
+                    <img v-else src="./../images/woman.png" alt=""/>
+                </div>
+                <div class="divPhone">{{form.phone}}</div>
             </div>
         </div>
     </div>
@@ -89,6 +92,10 @@
         data() {
             return {
                 form: {
+                    id: '',
+                    avatar: '',
+                    sex: '',
+                    name: "",
                     email: '',
                     phone: '',
                     code: ''
@@ -108,7 +115,7 @@
         },
         computed: {},
         created() {
-            this.userPhone = sessionStorage.getItem("userPhone")
+            this.form = JSON.parse(sessionStorage.getItem("user"))
             this.initData()
         },
         mounted() {
