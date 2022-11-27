@@ -1,1 +1,2 @@
-2022-11-27 09:57:34.566  INFO 8100 --- [lettuce-eventExecutorLoop-1-4] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was /192.168.139.101:6379
+2022-11-27 10:16:32.943  INFO 8100 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-11-27 10:16:32.951  INFO 8100 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
