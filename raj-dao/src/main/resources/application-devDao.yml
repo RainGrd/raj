@@ -11,7 +11,7 @@ spring:
       # 是否缓存空值
       cache-null-values: false
       # 设置键前缀
-#      key-prefix: sms_
+      #      key-prefix: sms_
       # 设置生命周期
       time-to-live: 10s
   redis:
@@ -24,5 +24,5 @@ spring:
     username: root
     type: com.alibaba.druid.pool.DruidDataSource
     password: drg1224605
-    url: jdbc:mysql://127.0.0.1:3306/reggie?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/reggie?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver

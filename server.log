@@ -1,31 +1,14 @@
-2022-11-28 11:06:29.656  INFO 8828 --- [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-28 11:06:29.681  INFO 8828 --- [http-nio-8081-exec-4] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.684  INFO 8828 --- [http-nio-8081-exec-4] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.772  INFO 8828 --- [http-nio-8081-exec-3] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.773  INFO 8828 --- [http-nio-8081-exec-3] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.777  INFO 8828 --- [http-nio-8081-exec-1] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.777  INFO 8828 --- [http-nio-8081-exec-1] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.778  INFO 8828 --- [http-nio-8081-exec-8] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.778  INFO 8828 --- [http-nio-8081-exec-8] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.779  INFO 8828 --- [http-nio-8081-exec-2] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.779  INFO 8828 --- [http-nio-8081-exec-6] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.779  INFO 8828 --- [http-nio-8081-exec-2] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.779  INFO 8828 --- [http-nio-8081-exec-6] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.779  INFO 8828 --- [http-nio-8081-exec-7] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.780  INFO 8828 --- [http-nio-8081-exec-7] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.797  INFO 8828 --- [http-nio-8081-exec-3] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.797  INFO 8828 --- [http-nio-8081-exec-3] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:29.800  INFO 8828 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:29.800  INFO 8828 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:30.027  INFO 8828 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:30.027  INFO 8828 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:30.039  INFO 8828 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:30.039  INFO 8828 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:30.040  INFO 8828 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:30.040  INFO 8828 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:30.041  INFO 8828 --- [http-nio-8081-exec-9] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
-2022-11-28 11:06:30.041  INFO 8828 --- [http-nio-8081-exec-9] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:null
-2022-11-28 11:06:30.042  INFO 8828 --- [http-nio-8081-exec-9] com.raj.interceptor.LoginInterceptor     : 拦截到请求：/error
-2022-11-28 11:06:30.426  INFO 8828 --- [http-nio-8081-exec-4] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-28 11:06:30.426  INFO 8828 --- [http-nio-8081-exec-4] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-28 11:06:37.048  INFO 8828 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2022-11-28 12:56:15.654  INFO 19168 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.0].
+2022-11-28 12:56:15.658  INFO 19168 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-11-28 12:56:15.658  INFO 19168 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-11-28 12:56:15.662  INFO 19168 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1q  5 Jul 2022]
+2022-11-28 12:56:15.674  INFO 19168 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-28 12:56:15.675  INFO 19168 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-28 12:56:15.925  INFO 19168 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-28 12:56:15.926  INFO 19168 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1913 ms
+2022-11-28 12:56:17.397  WARN 19168 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2022-11-28 12:56:17.686  INFO 19168 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
+2022-11-28 12:56:17.871  INFO 19168 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
+2022-11-28 12:56:17.987  INFO 19168 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/**, /common/**, /favicon.ico, /front/**, /user/sendCode.do, /user/login.do]
+2022-11-28 12:56:18.456  INFO 19168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-11-28 12:56:18.465  INFO 19168 --- [main] com.raj.RajEntranceApplication           : Started RajEntranceApplication in 4.995 seconds (JVM running for 6.12)
