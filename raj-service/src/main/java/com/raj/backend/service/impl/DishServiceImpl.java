@@ -1,5 +1,9 @@
 package com.raj.backend.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.ListUtil;
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.raj.backend.mapper.DishFlavorMapper;
@@ -17,12 +21,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -47,6 +55,9 @@ public class DishServiceImpl
 
     @Autowired
     private DishFlavorMapper dishFlavorMapper;
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
 
     @Override
@@ -98,6 +109,7 @@ public class DishServiceImpl
 
     @Override
     @Transactional
+    @CacheEvict(value = "front:dish:category:list", key = "#dishDto.categoryId")
     public void saveDishByDishDto(DishDto dishDto) {
         try {
             // 将菜品对象插入到t_dish表中
@@ -109,7 +121,9 @@ public class DishServiceImpl
             //将菜品的id添加进集合中
             List<DishFlavor> collect = flavors.stream().peek((item) -> item.setDishId(dishId)).collect(Collectors.toList());
             //批量插入到t_dish_flavor表中
-            boolean saveBatch = dishFlavorService.saveBatch(collect);
+            dishFlavorService.saveBatch(collect);
+            //清除该分类下菜品的数据
+//            stringRedisTemplate.delete(CommonEnum.FRONT_DISH_CATEGORY_LIST.getValue() + String.valueOf(dishDto.getCategoryId()));
         } catch (Exception e) {
             throw new BaseRuntimeException("系统正在维护中！");
         }
@@ -141,6 +155,7 @@ public class DishServiceImpl
 
     @Override
     @Transactional
+    @CacheEvict(value = "front:dish:category:list", key = "#dishDto.categoryId")
     public void modifyDishById(DishDto dishDto) {
         Dish dish = new Dish();
         try {
@@ -166,6 +181,8 @@ public class DishServiceImpl
             log.info("再次新增更新后的口味:{}", flavors);
             // 3.再次新增更新后的口味
             dishFlavorService.saveBatch(flavors);
+            //清除该分类下菜品的数据
+//            stringRedisTemplate.delete(CommonEnum.FRONT_DISH_CATEGORY_LIST.getValue() + String.valueOf(dishDto.getCategoryId()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -204,7 +221,21 @@ public class DishServiceImpl
     }
 
     @Override
+    @Cacheable(key = "#dish.categoryId", cacheNames = "front:dish:category:list")
     public List<DishDto> queryDishListByCategoryId(Dish dish) {
+//        String key = CommonEnum.FRONT_DISH_CATEGORY_LIST.getValue() + dish.getCategoryId();
+        //创建dishdto集合
+        List<DishDto> dishDtoList = new ArrayList<>();
+        //线程Redis中查询数据
+//        String range = stringRedisTemplate.opsForValue().get(key);
+        //使用hutools定义泛型
+//        dishDtoList = JSONUtil.toList(range, DishDto.class);
+//        log.info("从Redis中查询出来的菜品:{}", dishDtoList);
+        //判断Redis中的数据是否为空
+        /*if (dishDtoList != null && dishDtoList.size() != 0) {
+            return dishDtoList;
+        }*/
+        //为空，构成查询条件从数据库中查询数据
         LambdaQueryWrapper<Dish> dishLambdaQueryWrapper = new LambdaQueryWrapper<>();
         //查询条件 分类id和菜品状态
         dishLambdaQueryWrapper.eq(Dish::getCategoryId, dish.getCategoryId());
@@ -212,9 +243,7 @@ public class DishServiceImpl
         // 排序条件
         dishLambdaQueryWrapper.orderByDesc(Dish::getUpdateTime);
         //查询出来的菜品集合
-        List<Dish> dishes = dishMapper.selectList(dishLambdaQueryWrapper);
-        //创建dishdto集合
-        List<DishDto> dishDtoList = new ArrayList<>();
+        List<Dish> dishes = dishes = dishMapper.selectList(dishLambdaQueryWrapper);
         dishDtoList = dishes.stream().map((item) -> {
             DishDto dishDto = new DishDto();
             //拷贝属性
@@ -232,9 +261,10 @@ public class DishServiceImpl
             return dishDto;
         }).collect(Collectors.toList());
         log.info("dishDto集合:{}", dishDtoList);
+        //添加到Redis中存储数据并设置有效时间
+//        stringRedisTemplate.opsForValue().set(key, JSONUtil.toJsonStr(dishDtoList), Long.parseLong(CommonEnum.CACHE_COMMON_TIME_UNIT.getValue()), TimeUnit.MINUTES);
         return dishDtoList;
     }
-
 
 }
 

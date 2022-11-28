@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.raj.front.mapper.OrderDetailMapper">
 
-    <resultMap id="BaseResultMap" type="com.raj.entity.front.OrderDetail">
+    <resultMap id="OrderDetailResultMap" type="com.raj.entity.front.OrderDetail">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="image" column="image" jdbcType="VARCHAR"/>
@@ -16,7 +16,7 @@
             <result property="amount" column="amount" jdbcType="DECIMAL"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
+    <sql id="OrderDetail_Column_List">
         id,name,image,
         order_id,dish_id,setmeal_id,
         dish_flavor,number,amount

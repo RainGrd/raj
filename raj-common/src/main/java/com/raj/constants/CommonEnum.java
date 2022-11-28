@@ -88,8 +88,15 @@ public enum CommonEnum {
     /**
      * 订单状态:已取消
      */
-    ORDERS_STATUS_CLOSE("5");
-
+    ORDERS_STATUS_CLOSE("5"),
+    /**
+     * 根据分类查询菜品
+     */
+    FRONT_DISH_CATEGORY_LIST("front:dish:category:list:"),
+    /**
+     * 缓存的公共的超时时间,60分钟
+     */
+    CACHE_COMMON_TIME_UNIT("60");
     private final String value;
 
 

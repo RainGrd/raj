@@ -28,10 +28,6 @@ import java.util.List;
 @RequestMapping("/setmeal")
 public class SetmealController {
 
-
-    @Resource
-    private DishService dishService;
-
     @Resource
     private SetmealService setmealService;
 

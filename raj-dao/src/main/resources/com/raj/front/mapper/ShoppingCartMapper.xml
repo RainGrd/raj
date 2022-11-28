@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.raj.front.mapper.ShoppingCartMapper">
 
-    <resultMap id="BaseResultMap" type="com.raj.entity.front.ShoppingCart">
+    <resultMap id="ShoppingCartResultMap" type="com.raj.entity.front.ShoppingCart">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="image" column="image" jdbcType="VARCHAR"/>
@@ -17,7 +17,7 @@
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
+    <sql id="ShoppingCart_Column_List">
         id,name,image,
         user_id,dish_id,setmeal_id,
         dish_flavor,number,amount,

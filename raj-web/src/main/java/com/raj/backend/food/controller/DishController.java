@@ -104,7 +104,7 @@ public class DishController {
      */
     @PutMapping("/modifyDishById.do")
     public Object modifyDishById(@RequestBody DishDto dishDto) throws BaseException {
-        log.info("传输过来的菜品dto:{}", dishDto);
+        log.info("需要修改的菜品dto:{}", dishDto);
         dishService.modifyDishById(dishDto);
         return Result.success();
     }

@@ -1,6 +1,8 @@
 package com.raj.front.service;
 
+import cn.hutool.core.lang.UUID;
 import com.raj.entity.front.User;
+import com.raj.utils.UUIDUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -51,5 +53,11 @@ public class UserServiceTest {
         map.put("email", "duanronggui1224@163.com");
         map.put("code", "f2e01d");
         System.out.println(userService.login(map));
+    }
+
+
+    @Test
+    void uuidTest() {
+        System.out.println(UUID.randomUUID());
     }
 }

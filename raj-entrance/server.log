@@ -1,18 +1,18 @@
-2022-11-23 16:38:35.467  INFO 6436 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txManger' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 16:38:35.479  INFO 6436 --- [main] com.raj.config.TxAnoConfig               : 加载事务拦截器
-2022-11-23 16:38:35.480  INFO 6436 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 16:38:35.490  INFO 6436 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
-2022-11-23 16:38:35.520  INFO 6436 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2022-11-23 16:38:38.538  WARN 6436 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
-2022-11-23 16:38:38.807  INFO 6436 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
-2022-11-23 16:38:39.598  INFO 6436 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
-2022-11-23 16:38:39.881  INFO 6436 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/api/**, /backend/images/**, /backend/js/**, /backend/plugins/**, /backend/styles/**, /backend/favicon.ico, /backend/login/**, /common/**, /backend/page/**, /favicon.ico, /backend/email.html, /front/page/**, /front/index.html, /front/api/**, /front/images/**, /front/js/**, /front/fonts/**, /front/styles/**, /front/favicon.ico, /front/login/**, /front/email.html]
-2022-11-23 16:38:41.049  INFO 6436 --- [main] com.raj.front.service.UserServiceTest    : Started UserServiceTest in 9.183 seconds (JVM running for 11.243)
-2022-11-23 16:38:41.525  INFO 6436 --- [main] c.r.front.service.impl.UserServiceImpl   : 验证码-------------------------------:fd9d26
-2022-11-23 16:38:43.011  INFO 6436 --- [main] c.r.front.service.impl.UserServiceImpl   : 封装好的邮箱实体对象:EmailModel(sendTo=duanronggui1224@163.com, title=瑞吉外卖邮箱登录验证码, text=fd9d26, filePath=null)
-2022-11-23 16:38:43.070  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 发件人:3408396469@qq.com
-2022-11-23 16:38:43.072  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 收件人:duanronggui1224@163.com
-2022-11-23 16:38:43.073  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 邮件标题:瑞吉外卖邮箱登录验证码
-2022-11-23 16:38:43.075  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 邮件内容:fd9d26
-2022-11-23 16:38:49.347  INFO 6436 --- [main] com.raj.utils.EmailUtils                 : 邮件已经发送成功
-2022-11-23 16:38:49.505  INFO 6436 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2022-11-28 19:38:07.639  INFO 12856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-28 19:38:07.649  INFO 12856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-28 19:38:07.710  INFO 12856 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 0 Redis repository interfaces.
+2022-11-28 19:38:08.423  INFO 12856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Generic] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-28 19:38:08.460  INFO 12856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-28 19:38:08.518  INFO 12856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-28 19:38:08.535  INFO 12856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAnoConfig' of type [com.raj.config.TxAnoConfig$$EnhancerBySpringCGLIB$$3d349538] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-28 19:38:08.560  INFO 12856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txManger' of type [org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-28 19:38:08.565  INFO 12856 --- [main] com.raj.config.TxAnoConfig               : 加载事务拦截器
+2022-11-28 19:38:08.565  INFO 12856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-28 19:38:08.571  INFO 12856 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
+2022-11-28 19:38:08.578  INFO 12856 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-11-28 19:38:10.725  WARN 12856 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2022-11-28 19:38:11.154  INFO 12856 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
+2022-11-28 19:38:11.679  INFO 12856 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
+2022-11-28 19:38:11.883  INFO 12856 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/**, /common/**, /favicon.ico, /front/**, /user/sendCode.do, /user/login.do]
+2022-11-28 19:38:12.676  INFO 12856 --- [main] com.raj.front.service.UserServiceTest    : Started UserServiceTest in 6.456 seconds (JVM running for 7.961)
+2022-11-28 19:38:13.361  INFO 12856 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...

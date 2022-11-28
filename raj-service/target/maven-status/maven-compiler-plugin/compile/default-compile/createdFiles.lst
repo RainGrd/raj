@@ -1,6 +1,5 @@
 com\raj\backend\service\impl\SetmealServiceImpl.class
 com\raj\backend\service\SetmealService.class
-com\raj\entity\service\OrdersService.class
 com\raj\front\service\impl\ShoppingCartServiceImpl.class
 com\raj\front\service\OrderDetailService.class
 com\raj\backend\service\impl\DishFlavorServiceImpl.class
@@ -13,6 +12,7 @@ com\raj\backend\service\CategoryService.class
 com\raj\front\service\ShoppingCartService.class
 com\raj\backend\service\ISetmealDishService.class
 com\raj\backend\service\impl\EmployeeServiceImpl.class
+com\raj\front\service\OrdersService.class
 com\raj\backend\service\impl\DishServiceImpl.class
 com\raj\front\service\AddressBookService.class
 com\raj\config\TxAnoConfig.class
