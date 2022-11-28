@@ -33,9 +33,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <classifier>exec</classifier>
+<!--                    <classifier>exec</classifier>-->
                     <mainClass>com.raj.RajEntranceApplication</mainClass>
                     <fork>true</fork>
+                    <layout>ZIP</layout>
+                    <includes>
+                        <include>
+                            <!-- 排除所有Jar -->
+                            <groupId>nothing</groupId>
+                            <artifactId>nothing</artifactId>
+                        </include>
+                    </includes>
                     <addResources>true</addResources>
                 </configuration>
                 <executions>

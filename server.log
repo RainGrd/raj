@@ -1,2 +1,13 @@
-2022-11-27 10:16:32.943  INFO 8100 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-27 10:16:32.951  INFO 8100 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-11-28 09:36:38.512  INFO 7392 --- [http-nio-8081-exec-2] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
+2022-11-28 09:36:38.669  INFO 7392 --- [http-nio-8081-exec-4] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
+2022-11-28 09:36:38.669  INFO 7392 --- [http-nio-8081-exec-4] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
+2022-11-28 09:36:39.025  INFO 7392 --- [http-nio-8081-exec-3] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
+2022-11-28 09:36:39.025  INFO 7392 --- [http-nio-8081-exec-3] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
+2022-11-28 09:36:41.602  INFO 7392 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
+2022-11-28 09:36:41.602  INFO 7392 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
+2022-11-28 09:36:41.610  INFO 7392 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
+2022-11-28 09:36:41.610  INFO 7392 --- [http-nio-8081-exec-5] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
+2022-11-28 09:36:41.610  INFO 7392 --- [http-nio-8081-exec-5] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
+2022-11-28 09:36:41.610  INFO 7392 --- [http-nio-8081-exec-5] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:null
+2022-11-28 09:36:41.610  INFO 7392 --- [http-nio-8081-exec-5] com.raj.interceptor.LoginInterceptor     : 拦截到请求：/error
+2022-11-28 09:36:44.279  INFO 7392 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
