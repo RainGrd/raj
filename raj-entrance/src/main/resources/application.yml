@@ -1,3 +1,6 @@
 spring:
   profiles:
-    active: common,entity,dao,service,web,entrance
+    active: @profile.active@
+    group:
+      "dev": devDao,devService,devCommon,devWeb
+      "pro": devDao,devService,devCommon,proWeb

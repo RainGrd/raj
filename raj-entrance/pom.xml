@@ -69,9 +69,9 @@
                     <compilerArguments>
                         <verbose/>
                         <!-- windwos环境（二选一） -->
-<!--                        <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>-->
+                        <!--                        <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>-->
                         <!-- Linux环境（二选一） -->
-<!--                        <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>-->
+                        <!--                        <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>-->
                     </compilerArguments>
                 </configuration>
             </plugin>
@@ -123,4 +123,28 @@
         </plugins>
     </build>
 
+    <profiles>
+        <!--配置多环境-->
+        <profile>
+            <id>dev_env</id>
+            <properties>
+                <profile.active>dev</profile.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>pro_env</id>
+            <properties>
+                <profile.active>pro</profile.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>test_env</id>
+            <properties>
+                <profile.active>test</profile.active>
+            </properties>
+        </profile>
+    </profiles>
 </project>

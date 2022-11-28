@@ -1,0 +1,28 @@
+spring:
+  # 将所有数字转为 String 类型返回，避免前端数据精度丢失的问题
+  jackson:
+    generator:
+      write-numbers-as-strings: true
+  cache:
+    type: redis
+    redis:
+      # 是否打开键前缀
+      use-key-prefix: false
+      # 是否缓存空值
+      cache-null-values: false
+      # 设置键前缀
+#      key-prefix: sms_
+      # 设置生命周期
+      time-to-live: 10s
+  redis:
+    host: 192.168.139.101
+    port: 6379
+    password: drg1224605
+    database: 0
+    connect-timeout: 5000
+  datasource:
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    password: drg1224605
+    url: jdbc:mysql://127.0.0.1:3306/reggie?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
