@@ -1,7 +1,20 @@
-2022-11-29 15:37:52.743  INFO 7820 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-29 15:37:52.745  INFO 7820 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-29 15:37:52.751  INFO 7820 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:null
-2022-11-29 15:37:52.751  INFO 7820 --- [http-nio-8081-exec-9] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:true
-2022-11-29 15:37:52.751  INFO 7820 --- [http-nio-8081-exec-9] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:null
-2022-11-29 15:37:52.751  INFO 7820 --- [http-nio-8081-exec-9] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:null
-2022-11-29 15:37:52.751  INFO 7820 --- [http-nio-8081-exec-9] com.raj.interceptor.LoginInterceptor     : 拦截到请求：/error
+2022-11-30 14:17:59.462  INFO 6260 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:82ba79bc091343018d0c514c91df2a44
+2022-11-30 14:17:59.463  INFO 6260 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:false
+2022-11-30 14:17:59.465  INFO 6260 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的员工:{devStatus=0, sex=1, updateUser=1, updateTime=2021-05-10T02:24:09, idNumber=110101199001010047, password=e10adc3949ba59abbe56e057f20f883e, employeeClassify=0, phone=13812312312, createTime=2021-05-06T17:20:07, name=管理员, createUser=1, id=1415576781934608386, username=admin, status=1}
+2022-11-30 14:17:59.468  INFO 6260 --- [http-nio-8081-exec-10] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的用户:{}
+2022-11-30 14:17:59.468  INFO 6260 --- [http-nio-8081-exec-10] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:Employee(id=1415576781934608386, name=管理员, username=admin, password=e10adc3949ba59abbe56e057f20f883e, phone=13812312312, sex=1, idNumber=110101199001010047, status=1, createTime=2021-05-06T17:20:07, updateTime=2021-05-10T02:24:09, createUser=1, updateUser=1, devStatus=0, employeeClassify=0)
+2022-11-30 14:17:59.468  INFO 6260 --- [http-nio-8081-exec-10] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:null
+2022-11-30 14:17:59.469  INFO 6260 --- [http-nio-8081-exec-10] c.r.b.m.controller.EmployeeController    : pageSize:10,page:1,name:rain
+2022-11-30 14:17:59.475  INFO 6260 --- [http-nio-8081-exec-10] c.r.b.m.controller.EmployeeController    : 输出查询的分页数据:[]
+2022-11-30 14:18:05.377  INFO 6260 --- [http-nio-8081-exec-1] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌:82ba79bc091343018d0c514c91df2a44
+2022-11-30 14:18:05.377  INFO 6260 --- [http-nio-8081-exec-1] c.r.interceptor.RefreshTokenInterceptor  : 登录令牌是否为空:false
+2022-11-30 14:18:05.379  INFO 6260 --- [http-nio-8081-exec-1] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的员工:{devStatus=0, sex=1, updateUser=1, updateTime=2021-05-10T02:24:09, idNumber=110101199001010047, password=e10adc3949ba59abbe56e057f20f883e, employeeClassify=0, phone=13812312312, createTime=2021-05-06T17:20:07, name=管理员, createUser=1, id=1415576781934608386, username=admin, status=1}
+2022-11-30 14:18:05.382  INFO 6260 --- [http-nio-8081-exec-1] c.r.interceptor.RefreshTokenInterceptor  : Redis储存中的用户:{}
+2022-11-30 14:18:05.382  INFO 6260 --- [http-nio-8081-exec-1] com.raj.interceptor.LoginInterceptor     : 当前线程的员工对象:Employee(id=1415576781934608386, name=管理员, username=admin, password=e10adc3949ba59abbe56e057f20f883e, phone=13812312312, sex=1, idNumber=110101199001010047, status=1, createTime=2021-05-06T17:20:07, updateTime=2021-05-10T02:24:09, createUser=1, updateUser=1, devStatus=0, employeeClassify=0)
+2022-11-30 14:18:05.382  INFO 6260 --- [http-nio-8081-exec-1] com.raj.interceptor.LoginInterceptor     : 当前线程的用户对象:null
+2022-11-30 14:18:05.382  INFO 6260 --- [http-nio-8081-exec-1] c.r.b.m.controller.EmployeeController    : pageSize:10,page:1,name:Rain
+2022-11-30 14:18:05.391  INFO 6260 --- [http-nio-8081-exec-1] c.r.b.m.controller.EmployeeController    : 输出查询的分页数据:[Employee(id=1590582743060742145, name=RainGrd, username=bdqn, password=e10adc3949ba59abbe56e057f20f883e, phone=15873461176, sex=1, idNumber=430481200512240371, status=1, createTime=2022-11-10T13:50:52, updateTime=2022-11-14T09:45:40, createUser=1, updateUser=1, devStatus=0, employeeClassify=1)]
+2022-11-30 15:07:27.373  INFO 6260 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-11-30 15:07:27.380  INFO 6260 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-11-30 15:07:27.380  INFO 6260 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closing ...
+2022-11-30 15:07:27.381  INFO 6260 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed

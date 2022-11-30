@@ -48,7 +48,7 @@ public class EmployeeServiceTest {
 
     @Test
     void queryEmployeeListForPageTest() {
-        Page<Employee> employeePage = employeeService.queryEmployeeListForPage(10, 1, "rain");
+        Page<Employee> employeePage = employeeService.queryEmployeeListForPage(10, 1, null);
         System.out.println(employeePage.getRecords());
     }
 

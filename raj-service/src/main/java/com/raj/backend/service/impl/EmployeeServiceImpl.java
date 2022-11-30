@@ -103,7 +103,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @Cacheable(cacheNames = "employee:page", key = "#pageSize+'-'+#page")
+//    @Cacheable(cacheNames = "employee:page", key = "#pageSize+'-'+#page")
     public Page<Employee> queryEmployeeListForPage(int pageSize, int page, String name) {
         LambdaQueryWrapper<Employee> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         //判断name是否为空
