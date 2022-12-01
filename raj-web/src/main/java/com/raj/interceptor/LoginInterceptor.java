@@ -26,6 +26,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) throws Exception {
+        log.info("请求:{}", request.getRequestURI());
         // 取出当前线程的员工对象
         Employee employee = EmployeeHolder.getEmployee();
         log.info("当前线程的员工对象:{}", employee);
@@ -35,7 +36,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             //放行
             return true;
         }
-        log.info("拦截到请求：{}", request.getRequestURI());
         //回写错误信息
         response.getWriter().write(JSONUtil.toJsonStr(Result.error("NOTLOGIN")));
         return false;

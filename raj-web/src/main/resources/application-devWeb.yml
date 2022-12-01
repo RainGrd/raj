@@ -5,7 +5,10 @@ spring:
     name: raj
   thymeleaf:
     cache: false
-    mode: HTML5
+    mode: HTML
     prefix: classpath:/templates/
     suffix: .html
     encoding: UTF-8
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

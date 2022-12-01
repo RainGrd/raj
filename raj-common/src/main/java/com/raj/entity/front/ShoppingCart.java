@@ -1,17 +1,21 @@
 package com.raj.entity.front;
 
-import com.baomidou.mybatisplus.annotation.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 /**
  * 购物车
@@ -19,132 +23,79 @@ import lombok.Data;
  * @TableName t_shopping_cart
  */
 @Data
+@Component
+@ApiModel("购物车")
 public class ShoppingCart implements Serializable {
+
+    private static final long serialVersionUID = -6836722903854070237L;
     /**
      * 主键
      */
-    @TableId(value = "id")
+    @NotNull(message = "[主键]不能为空")
+    @ApiModelProperty("主键")
+    @TableId("id")
     private Long id;
-
     /**
      * 名称
      */
-    @TableField(value = "name")
+    @Size(max = 50, message = "编码长度不能超过50")
+    @ApiModelProperty("名称")
+    @Length(max = 50, message = "编码长度不能超过50")
+    @TableField("name")
     private String name;
-
     /**
      * 图片
      */
-    @TableField(value = "image")
+    @Size(max = 100, message = "编码长度不能超过100")
+    @ApiModelProperty("图片")
+    @Length(max = 100, message = "编码长度不能超过100")
+    @TableField("image")
     private String image;
-
     /**
      * 主键
      */
-    @TableField(value = "user_id")
+    @NotNull(message = "[主键]不能为空")
+    @ApiModelProperty("主键")
+    @TableField("user_id")
     private Long userId;
-
     /**
      * 菜品id
      */
-    @TableField(value = "dish_id")
+    @ApiModelProperty("菜品id")
+    @TableField("dish_id")
     private Long dishId;
-
     /**
      * 套餐id
      */
-    @TableField(value = "setmeal_id")
+    @ApiModelProperty("套餐id")
+    @TableField("setmeal_id")
     private Long setmealId;
-
     /**
      * 口味
      */
-    @TableField(value = "dish_flavor")
+    @Size(max = 50, message = "编码长度不能超过50")
+    @ApiModelProperty("口味")
+    @Length(max = 50, message = "编码长度不能超过50")
+    @TableField("dish_flavor")
     private String dishFlavor;
-
     /**
      * 数量
      */
-    @TableField(value = "number")
+    @NotNull(message = "[数量]不能为空")
+    @ApiModelProperty("数量")
+    @TableField("number")
     private Integer number;
-
     /**
      * 金额
      */
-    @TableField(value = "amount")
+    @NotNull(message = "[金额]不能为空")
+    @ApiModelProperty("金额")
+    @TableField("amount")
     private BigDecimal amount;
-
     /**
      * 创建时间
      */
-    @TableField(value = "create_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/HUNAN")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @ApiModelProperty("创建时间")
+    @TableField("create_time")
     private LocalDateTime createTime;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        ShoppingCart other = (ShoppingCart) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-                && (this.getImage() == null ? other.getImage() == null : this.getImage().equals(other.getImage()))
-                && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-                && (this.getDishId() == null ? other.getDishId() == null : this.getDishId().equals(other.getDishId()))
-                && (this.getSetmealId() == null ? other.getSetmealId() == null : this.getSetmealId().equals(other.getSetmealId()))
-                && (this.getDishFlavor() == null ? other.getDishFlavor() == null : this.getDishFlavor().equals(other.getDishFlavor()))
-                && (this.getNumber() == null ? other.getNumber() == null : this.getNumber().equals(other.getNumber()))
-                && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()))
-                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getImage() == null) ? 0 : getImage().hashCode());
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getDishId() == null) ? 0 : getDishId().hashCode());
-        result = prime * result + ((getSetmealId() == null) ? 0 : getSetmealId().hashCode());
-        result = prime * result + ((getDishFlavor() == null) ? 0 : getDishFlavor().hashCode());
-        result = prime * result + ((getNumber() == null) ? 0 : getNumber().hashCode());
-        result = prime * result + ((getAmount() == null) ? 0 : getAmount().hashCode());
-        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", image=").append(image);
-        sb.append(", userId=").append(userId);
-        sb.append(", dishId=").append(dishId);
-        sb.append(", setmealId=").append(setmealId);
-        sb.append(", dishFlavor=").append(dishFlavor);
-        sb.append(", number=").append(number);
-        sb.append(", amount=").append(amount);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }

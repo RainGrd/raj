@@ -9,10 +9,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@ComponentScan(value = {"com.raj.backend", "com.raj.common", "com.raj.utils", "com.raj.config", "com.raj.front"})
+@ComponentScan(value = {"com.raj.service", "com.raj.entity", "com.raj.controller", "com.raj.common", "com.raj.utils", "com.raj.config", "com.raj.mapper"})
 // 开始事务注解支持
 @EnableTransactionManagement
-@MapperScan({"com.raj.backend.mapper", "com.raj.front.mapper"})
+@MapperScan({"com.raj.mapper"})
 public class RajEntranceApplication {
 
     public static void main(String[] args) throws Exception {

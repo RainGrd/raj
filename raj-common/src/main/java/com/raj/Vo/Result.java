@@ -1,6 +1,8 @@
 package com.raj.Vo;
 
 import com.raj.constants.CommonEnum;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,20 +17,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel(value = "结果类实体", description = "响应的数据类")
 public class Result {
     /**
      * 编码
      */
+    @ApiModelProperty("编码")
     private Integer code;
     /**
      * 响应数据
      */
+    @ApiModelProperty("响应数据")
     private Object data;
     /**
      * 提示信息
      */
+    @ApiModelProperty("提示信息")
     private String msg;
-
 
 
     /**

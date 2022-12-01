@@ -2,7 +2,7 @@ package com.raj.front.service;
 
 import cn.hutool.core.lang.UUID;
 import com.raj.entity.front.User;
-import com.raj.utils.UUIDUtils;
+import com.raj.service.front.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

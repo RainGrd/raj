@@ -242,6 +242,7 @@ public class BootFileUtils {
      */
     public static void downloadFile(String fileName, HttpServletResponse response) throws IOException {
         File file = new File(propertiesUtils.getAttachmentGainPath() + fileName);
+        log.info("文件全路径:{}",propertiesUtils.getAttachmentGainPath() + fileName);
         boolean flag = fileIsExist(file);
         if (flag) {
             InputStream ips = null;

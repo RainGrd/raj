@@ -1,21 +1,28 @@
 package com.raj.config;
 
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.raj.common.JacksonObjectMapper;
 import com.raj.interceptor.LoginInterceptor;
 import com.raj.interceptor.RefreshTokenInterceptor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.Resource;
-import javax.xml.ws.Action;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +35,12 @@ import java.util.List;
  */
 @Configuration
 @Slf4j
+//开启api
+//@EnableOpenApi
 public class MvcConfig implements WebMvcConfigurer {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
-
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -41,15 +49,20 @@ public class MvcConfig implements WebMvcConfigurer {
         //backend
         excludePathPatterns.add("/backend/**");
         excludePathPatterns.add("/common/**");
+        excludePathPatterns.add("/employee/login.do");
         excludePathPatterns.add("/favicon.ico");
         //front
         excludePathPatterns.add("/front/**");
         excludePathPatterns.add("/user/sendCode.do");
         excludePathPatterns.add("/user/login.do");
+        //api
+        excludePathPatterns.add("/doc.html");
+        excludePathPatterns.add("/webjars/**");
+        excludePathPatterns.add("/swagger-resources");
+        excludePathPatterns.add("/v2/api-docs");
         // 定义拦截路径
-        List<String> addPathPatterns = new ArrayList<>();
         log.info("放行路径:{}", excludePathPatterns);
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns(addPathPatterns).excludePathPatterns(excludePathPatterns).order(1);
+        registry.addInterceptor(new LoginInterceptor()).excludePathPatterns(excludePathPatterns).order(1);
         registry.addInterceptor(new RefreshTokenInterceptor(stringRedisTemplate)).order(0);
     }
 
@@ -68,4 +81,18 @@ public class MvcConfig implements WebMvcConfigurer {
         //将上面的消息转换器对象追加到mvc框架的转换器集合中
         converters.add(0, messageConverter);
     }
+    /**
+     * 加载静态资源映射
+     *
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        log.info("加载静态资源映射");
+        registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/backend/**").addResourceLocations("classpath:/backend/");
+        registry.addResourceHandler("/front/**").addResourceLocations("classpath:/front/");
+    }
+
 }

@@ -1,132 +1,94 @@
 package com.raj.entity.front;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+
+import java.io.Serializable;
+
+import java.math.BigDecimal;
+
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 /**
  * 订单明细表
+ *
  * @TableName t_order_detail
  */
 @Data
+@Component
+@ApiModel("订单明细")
 public class OrderDetail implements Serializable {
+
+    private static final long serialVersionUID = -4354805395416696147L;
     /**
      * 主键
      */
-    @TableId(value = "id")
+    @NotNull(message = "[主键]不能为空")
+    @ApiModelProperty("主键")
+    @TableId("id")
     private Long id;
-
     /**
      * 名字
      */
-    @TableField(value = "name")
+    @Size(max = 50, message = "编码长度不能超过50")
+    @ApiModelProperty("名字")
+    @Length(max = 50, message = "编码长度不能超过50")
+    @TableField("name")
     private String name;
-
     /**
      * 图片
      */
-    @TableField(value = "image")
+    @Size(max = 100, message = "编码长度不能超过100")
+    @ApiModelProperty("图片")
+    @Length(max = 100, message = "编码长度不能超过100")
+    @TableField("image")
     private String image;
-
     /**
      * 订单id
      */
-    @TableField(value = "order_id")
+    @NotNull(message = "[订单id]不能为空")
+    @ApiModelProperty("订单id")
+    @TableField("order_id")
     private Long orderId;
-
     /**
      * 菜品id
      */
-    @TableField(value = "dish_id")
+    @ApiModelProperty("菜品id")
+    @TableField("dish_id")
     private Long dishId;
-
     /**
      * 套餐id
      */
-    @TableField(value = "setmeal_id")
+    @ApiModelProperty("套餐id")
+    @TableField("setmeal_id")
     private Long setmealId;
-
     /**
      * 口味
      */
-    @TableField(value = "dish_flavor")
+    @Size(max = 50, message = "编码长度不能超过50")
+    @ApiModelProperty("口味")
+    @Length(max = 50, message = "编码长度不能超过50")
+    @TableField("dish_flavor")
     private String dishFlavor;
-
     /**
      * 数量
      */
-    @TableField(value = "number")
+    @NotNull(message = "[数量]不能为空")
+    @ApiModelProperty("数量")
+    @TableField("number")
     private Integer number;
-
     /**
      * 金额
      */
-    @TableField(value = "amount")
+    @NotNull(message = "[金额]不能为空")
+    @ApiModelProperty("金额")
+    @TableField("amount")
     private BigDecimal amount;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        OrderDetail other = (OrderDetail) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getImage() == null ? other.getImage() == null : this.getImage().equals(other.getImage()))
-            && (this.getOrderId() == null ? other.getOrderId() == null : this.getOrderId().equals(other.getOrderId()))
-            && (this.getDishId() == null ? other.getDishId() == null : this.getDishId().equals(other.getDishId()))
-            && (this.getSetmealId() == null ? other.getSetmealId() == null : this.getSetmealId().equals(other.getSetmealId()))
-            && (this.getDishFlavor() == null ? other.getDishFlavor() == null : this.getDishFlavor().equals(other.getDishFlavor()))
-            && (this.getNumber() == null ? other.getNumber() == null : this.getNumber().equals(other.getNumber()))
-            && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getImage() == null) ? 0 : getImage().hashCode());
-        result = prime * result + ((getOrderId() == null) ? 0 : getOrderId().hashCode());
-        result = prime * result + ((getDishId() == null) ? 0 : getDishId().hashCode());
-        result = prime * result + ((getSetmealId() == null) ? 0 : getSetmealId().hashCode());
-        result = prime * result + ((getDishFlavor() == null) ? 0 : getDishFlavor().hashCode());
-        result = prime * result + ((getNumber() == null) ? 0 : getNumber().hashCode());
-        result = prime * result + ((getAmount() == null) ? 0 : getAmount().hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", image=").append(image);
-        sb.append(", orderId=").append(orderId);
-        sb.append(", dishId=").append(dishId);
-        sb.append(", setmealId=").append(setmealId);
-        sb.append(", dishFlavor=").append(dishFlavor);
-        sb.append(", number=").append(number);
-        sb.append(", amount=").append(amount);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }
