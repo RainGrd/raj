@@ -52,7 +52,7 @@ spring:
         master-data-source-name: master
         # 从库数据源名称列表,多个逗号分隔
         slave-data-source-names: slave
-      props:
-        sql:
-          # 开启sql显示，默认为false
-          show: true
+    props:
+      sql:
+        # 开启sql显示，默认为false
+        show: true
