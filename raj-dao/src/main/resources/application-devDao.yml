@@ -56,6 +56,3 @@ spring:
         sql:
           # 开启sql显示，默认为false
           show: true
-  main:
-    # 允许bean定义覆盖
-    allow-bean-definition-overriding: true
