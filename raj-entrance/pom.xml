@@ -28,13 +28,17 @@
     </dependencies>
 
     <build>
+        <finalName>raj</finalName>
         <plugins>
+            <!-- 1、编译出不带 lib 文件夹的Jar包 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.raj.RajEntranceApplication</mainClass>
+                    <!--表示编译版本配置有效-->
                     <fork>true</fork>
+                    <!-- 项目启动类 -->
+                    <mainClass>com.raj.RajEntranceApplication</mainClass>
                     <!--引入第三方jar包时,不添加则引入的第三方jar不会被打入jar包中-->
                     <includeSystemScope>true</includeSystemScope>
                     <layout>ZIP</layout>
@@ -44,12 +48,28 @@
                             <groupId>nothing</groupId>
                             <artifactId>nothing</artifactId>
                         </include>
+                        <include>
+                            <groupId>com.raj</groupId>
+                            <artifactId>raj-web</artifactId>
+                        </include>
+                        <include>
+                            <groupId>com.raj</groupId>
+                            <artifactId>raj-common</artifactId>
+                        </include>
+                        <include>
+                            <groupId>com.raj</groupId>
+                            <artifactId>raj-service</artifactId>
+                        </include>
+                        <include>
+                            <groupId>com.raj</groupId>
+                            <artifactId>raj-dao</artifactId>
+                        </include>
                     </includes>
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -69,7 +89,7 @@
                     <compilerArguments>
                         <verbose/>
                         <!-- windwos环境（二选一） -->
-                        <!--                        <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>-->
+                        <!--                        <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>-->
                         <!-- Linux环境（二选一） -->
                         <!--                        <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>-->
                     </compilerArguments>
@@ -82,7 +102,7 @@
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
-                        <phase>prepare-package</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
@@ -92,9 +112,11 @@
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>false</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
+                                <excludeArtifactIds>raj-web,raj-common,raj-dao,raj-service</excludeArtifactIds>
                         </configuration>
                     </execution>
                 </executions>
+                <version>3.2.0</version>
             </plugin>
             <!-- 4、指定启动类，指定配置文件，将依赖打成外部jar包 -->
             <plugin>
@@ -107,22 +129,20 @@
                             <addClasspath>true</addClasspath>
                             <!-- 外部依赖jar包的最终位置 -->
                             <classpathPrefix>lib/</classpathPrefix>
-                            <!-- 项目启动类 -->
-                            <mainClass>com.javam4.MyApplication</mainClass>
                         </manifest>
                     </archive>
                     <!--资源文件不打进jar包中，做到配置跟项目分离的效果-->
                     <excludes>
-                        <!-- 业务jar中过滤application.properties/yml文件，在jar包外控制 -->
-                        <exclude>*.properties</exclude>
-                        <exclude>*.xml</exclude>
-                        <exclude>*.yml</exclude>
+                         <!--业务jar中过滤application.properties/yml文件，在jar包外控制 -->
+<!--                        <exclude>*.properties</exclude>-->
+<!--                        <exclude>*.xml</exclude>-->
+<!--                        <exclude>*.yml</exclude>-->
                     </excludes>
                 </configuration>
+                <version>3.2.0</version>
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <!--配置多环境-->
         <profile>

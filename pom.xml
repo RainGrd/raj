@@ -27,7 +27,6 @@
 
     <!--依赖版本控制-->
     <properties>
-        <boot.version>2.7.4</boot.version>
         <java.version>1.8</java.version>
         <mybatisPlus.version>3.5.2</mybatisPlus.version>
     </properties>
