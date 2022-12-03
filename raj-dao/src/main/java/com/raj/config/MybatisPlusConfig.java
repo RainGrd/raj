@@ -1,7 +1,9 @@
 package com.raj.config;
 
+import com.alibaba.druid.sql.dialect.mysql.ast.statement.MysqlAlterFullTextStatement;
 import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
+import com.baomidou.mybatisplus.core.parser.ISqlParser;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
@@ -11,6 +13,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Copyright (C), 2017-2022, RainGrd
  * Author: lenovo
@@ -19,7 +24,6 @@ import org.springframework.context.annotation.Configuration;
  * Description: 配置mybatis-plus
  */
 @Configuration
-//@MapperScan("com.raj.backend.mapper")
 public class MybatisPlusConfig {
 
     /**

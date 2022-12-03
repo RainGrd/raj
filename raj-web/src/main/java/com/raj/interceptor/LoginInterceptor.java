@@ -26,7 +26,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) throws Exception {
-        log.info("请求:{}", request.getRequestURI());
+        log.info("拦截到的请求:{}", request.getRequestURI());
         // 取出当前线程的员工对象
         Employee employee = EmployeeHolder.getEmployee();
         log.info("当前线程的员工对象:{}", employee);

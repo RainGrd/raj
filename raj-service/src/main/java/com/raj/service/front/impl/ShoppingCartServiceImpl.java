@@ -38,10 +38,11 @@ public class ShoppingCartServiceImpl extends ServiceImpl<ShoppingCartMapper, Sho
     public ShoppingCart saveShoppingCart(ShoppingCart shoppingCart) {
         //获取当前用户
         Long userId = UserHolder.getUser().getId();
+        log.info("当前用户id:{}",userId);
         // 获取菜品Id
         Long dishId = shoppingCart.getDishId();
         LambdaQueryWrapper<ShoppingCart> shoppingCartLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        shoppingCartLambdaQueryWrapper.eq(ShoppingCart::getUserId, userId);
+        shoppingCartLambdaQueryWrapper.eq(userId!=null,ShoppingCart::getUserId, userId);
         //查询当前菜品或者套餐是否存在于购物车中
         //添加购物车的是菜品
         shoppingCartLambdaQueryWrapper.eq(dishId != null, ShoppingCart::getDishId, dishId);
@@ -61,6 +62,7 @@ public class ShoppingCartServiceImpl extends ServiceImpl<ShoppingCartMapper, Sho
             shoppingCart.setNumber(1);
             shoppingCart.setUserId(userId);
             shoppingCart.setCreateTime(LocalDateTime.now());
+            log.info("封装好的购物车:{}",shoppingCart);
             //插入数据
             shoppingCartMapper.insert(shoppingCart);
             // 拼接数据

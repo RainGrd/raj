@@ -38,7 +38,7 @@ mybatis-plus:
   # 实体类扫描
   type-aliases-package: com.raj.entity
   # Mapper.xml扫描
-  mapper-locations: classpath*:/com/raj/backend/mapper/**Mapper.xml
+  mapper-locations: classpath*:/com/raj/mapper/**/**Mapper.xml
 # 设置文件上传大小
 spring:
   devtools:
@@ -56,5 +56,7 @@ spring:
     #     授权码
     password: ehxpiojrhuktdbhg
     default-encoding: UTF-8
+  main:
+    allow-bean-definition-overriding: true
 
 

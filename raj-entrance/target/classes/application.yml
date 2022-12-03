@@ -2,5 +2,5 @@ spring:
   profiles:
     active: dev
     group:
-      "dev": devDao,devService,devCommon,devWeb
-      "pro": devDao,devService,devCommon,proWeb
+      "dev": devDao,devService,devCommon,devWeb,shardingsphere
+      "pro": devDao,devService,devCommon,proWeb,shardingsphere

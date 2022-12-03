@@ -1,0 +1,31 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: master,slave
+      # 主数据源
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        username: root
+        password: drg1224605
+        url: jdbc:mysql://192.168.139.102:3306/reggie?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      # 从数据源
+      slave:
+        type: com.alibaba.druid.pool.DruidDataSource
+        username: root
+        password: drg1224605
+        url: jdbc:mysql://192.168.139.103:3306/reggie?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    masterslave:
+      # 读写分离配置
+      load-balance-algorithm-type: round_robin # 轮询
+      # 最终的数据源名称
+      name: dataSource
+      # 主库数据源名称
+      master-data-source-name: master
+      # 从库数据源名称列表,多个逗号分隔
+      slave-data-source-names: slave
+    props:
+      sql:
+        # 开启sql显示，默认为false
+        show: true

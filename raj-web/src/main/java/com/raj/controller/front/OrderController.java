@@ -38,6 +38,7 @@ public class OrderController {
     @ApiOperation("分页查询所有订单管理接口")
     @GetMapping("/queryOrderPage.do")
     public Result queryOrderPage(@RequestParam int page, @RequestParam int pageSize) {
+        log.info("查询历史订单的分页参数: page:{},pageSize:{}",page,pageSize);
         Page<OrdersDto> ordersPage = ordersService.queryOrderPage(page, pageSize);
         return Result.success(ordersPage);
     }
@@ -54,4 +55,19 @@ public class OrderController {
         ordersService.saveOrders(orders);
         return Result.success();
     }
+
+    /**
+     * 分页查询订单
+     * @param page
+     * @param pageSize
+     * @param number 订单号
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @return com.raj.Vo.Result
+     */
+    /*@GetMapping("/queryOrderPage.do")
+    public Result queryOrderPage(int page,int pageSize,String number,String startTime,String endTime){
+        ordersService.queryOrderPage()
+        return Result.success();
+    }*/
 }

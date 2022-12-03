@@ -2,6 +2,7 @@ package com.raj.mapper.front;
 
 import com.raj.entity.front.AddressBook;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 * @createDate 2022-11-23 18:03:09
 * @Entity com.raj.entity.front.AddressBook
 */
-@Repository
+@Mapper
 public interface AddressBookMapper extends BaseMapper<AddressBook> {
 
 }

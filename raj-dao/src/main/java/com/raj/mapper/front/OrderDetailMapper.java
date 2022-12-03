@@ -2,6 +2,7 @@ package com.raj.mapper.front;
 
 import com.raj.entity.front.OrderDetail;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 * @createDate 2022-11-23 17:02:27
 * @Entity com.raj.entity.front.OrderDetail
 */
-@Repository
+@Mapper
 public interface OrderDetailMapper extends BaseMapper<OrderDetail> {
 
 }

@@ -2,6 +2,7 @@ package com.raj.mapper.front;
 
 import com.raj.entity.front.Orders;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author RainGrd
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-11-25 16:42:30
 * @Entity com.raj.entity.front.Orders
 */
+@Mapper
 public interface OrdersMapper extends BaseMapper<Orders> {
 
 }

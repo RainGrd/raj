@@ -37,6 +37,7 @@ public class ShoppingCartController {
     @ApiOperation("查询购物车列表接口")
     @GetMapping("/queryShoppingCartList.do")
     public Result queryShoppingCartList(ShoppingCart shoppingCart) {
+        log.info("查询购物车:{}", shoppingCart);
         List<ShoppingCart> shoppingCarts = shoppingCartService.queryShoppingCartList(shoppingCart);
         return Result.success(shoppingCarts);
     }
@@ -53,7 +54,6 @@ public class ShoppingCartController {
         log.info("要保存的商品:{}", shoppingCart);
         //保存商品
         ShoppingCart cart = shoppingCartService.saveShoppingCart(shoppingCart);
-
         return cart == null ? Result.error("保存失败!!!") : Result.success(cart);
     }
 

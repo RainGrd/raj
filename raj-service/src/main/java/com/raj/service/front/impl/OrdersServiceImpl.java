@@ -53,10 +53,12 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders>
     public void saveOrders(Orders orders) {
         //获取当前用户
         User user = UserHolder.getUser();
+        log.info("当前用户:{}", user);
         //查询当前当前用户的购物车数据
         LambdaQueryWrapper<ShoppingCart> shoppingCartMapperLambdaQueryWrapper = new LambdaQueryWrapper<>();
         shoppingCartMapperLambdaQueryWrapper.eq(user.getId() != null, ShoppingCart::getUserId, user.getId());
         List<ShoppingCart> shoppingCarts = shoppingCartMapper.selectList(shoppingCartMapperLambdaQueryWrapper);
+        log.info("查询到的购物车集合:{}", shoppingCarts);
         //判断购物车是否为空
         if (shoppingCarts == null || shoppingCarts.size() == 0) {
             throw new BaseRuntimeException("购物车为空!不能下单");
@@ -120,6 +122,8 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders>
     public Page<OrdersDto> queryOrderPage(int page, int pageSize) {
         Page<Orders> ordersPage = new Page<>(page, pageSize);
         LambdaQueryWrapper<Orders> ordersLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //排序条件 下单时间倒序
+        ordersLambdaQueryWrapper.orderByDesc(Orders::getOrderTime);
         Page<Orders> selectPage = ordersMapper.selectPage(ordersPage, ordersLambdaQueryWrapper);
         Page<OrdersDto> ordersDtoPage = new Page<>();
         //复制属性

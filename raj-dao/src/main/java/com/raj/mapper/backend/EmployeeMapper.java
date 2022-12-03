@@ -2,6 +2,7 @@ package com.raj.mapper.backend;
 
 import com.raj.entity.backend.Employee;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 * @createDate 2022-10-26 09:31:42
 * @Entity com.raj.employee.entity.Employee
 */
-@Repository
+@Mapper
 public interface EmployeeMapper extends BaseMapper<Employee> {
 
 

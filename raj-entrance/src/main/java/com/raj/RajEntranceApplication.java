@@ -17,7 +17,6 @@ public class RajEntranceApplication {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(RajEntranceApplication.class, args);
-//        MusicPlay.play("D:\\lenovo\\Desktop\\周杰伦-《稻香》 MP3音乐免费下载 (2).mp3");
     }
 
 }

@@ -2,6 +2,7 @@ package com.raj.mapper.backend;
 
 import com.raj.entity.backend.Dish;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @createDate 2022-11-14 16:40:46
  * @Entity com.raj.entity.backend.Dish
  */
-@Repository
+@Mapper
 public interface DishMapper extends BaseMapper<Dish> {
 
 
