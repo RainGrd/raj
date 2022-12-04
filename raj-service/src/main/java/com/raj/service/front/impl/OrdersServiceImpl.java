@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.raj.constants.CommonEnum;
 import com.raj.dto.OrdersDto;
 import com.raj.entity.front.*;
+import com.raj.mapper.front.UserMapper;
 import com.raj.service.front.OrdersService;
 import com.raj.exception.BaseRuntimeException;
 import com.raj.mapper.front.AddressBookMapper;
@@ -22,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -47,6 +49,9 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders>
 
     @Resource
     private OrderDetailService orderDetailService;
+
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     @Transactional
@@ -119,7 +124,7 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders>
     }
 
     @Override
-    public Page<OrdersDto> queryOrderPage(int page, int pageSize) {
+    public Page<OrdersDto> queryOrderHistoryPage(int page, int pageSize) {
         Page<Orders> ordersPage = new Page<>(page, pageSize);
         LambdaQueryWrapper<Orders> ordersLambdaQueryWrapper = new LambdaQueryWrapper<>();
         //排序条件 下单时间倒序
@@ -144,6 +149,50 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders>
         ordersDtoPage.setRecords(ordersDtoList);
         log.info("查询的订单分页对象:{}", ordersDtoList);
         return ordersDtoPage;
+    }
+
+    @Override
+    public Page<OrdersDto> queryOrderPage(int page, int pageSize, String number, String beginTime, String endTime) {
+        Page<OrdersDto> ordersDtoPage = new Page<>();
+        //查询所有订单
+        Page<Orders> ordersPage = new Page<>(page, pageSize);
+        LambdaQueryWrapper<Orders> ordersLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //默认排序条件  下单时间
+        ordersLambdaQueryWrapper.orderByDesc(Orders::getOrderTime);
+        //查询条件 订单号 下单时间
+        ordersLambdaQueryWrapper.eq(number != null, Orders::getNumber, number);
+        ordersLambdaQueryWrapper.gt(beginTime != null, Orders::getOrderTime, beginTime);
+        ordersLambdaQueryWrapper.lt(endTime != null, Orders::getOrderTime, endTime);
+        ordersPage = ordersMapper.selectPage(ordersPage, ordersLambdaQueryWrapper);
+        log.info("查询出来的分页集合数据:{}", ordersPage.getRecords());
+        //复制属性
+        BeanUtils.copyProperties(ordersPage, ordersDtoPage, "records");
+        //遍历集合
+        List<Orders> records = ordersPage.getRecords();
+        List<OrdersDto> ordersDtoList = ordersDtoList = records.stream().map((item) -> {
+            OrdersDto ordersDto = new OrdersDto();
+            //复制属性
+            BeanUtils.copyProperties(item, ordersDto);
+            log.info("复制出来的属性:{}", ordersDto);
+            //使用用户id查询用户
+            User user = userMapper.selectById(ordersDto.getUserId());
+            //根据地址id查询地址
+            AddressBook addressBook = addressBookMapper.selectById(ordersDto.getAddressBookId());
+            //封装数据
+            ordersDto.setUserName(user.getName());
+            ordersDto.setPhone(user.getPhone());
+            ordersDto.setAddress(addressBook.getDetail());
+            //填充
+            return ordersDto;
+        }).collect(Collectors.toList());
+        ordersDtoPage.setRecords(ordersDtoList);
+        log.info("查询出来的订单分页数据:{}", ordersDtoPage.getRecords());
+        return ordersDtoPage;
+    }
+
+    @Override
+    public int editOrderDetail(Orders orders) {
+        return ordersMapper.updateById(orders);
     }
 }
 

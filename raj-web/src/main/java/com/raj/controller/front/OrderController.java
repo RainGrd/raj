@@ -35,11 +35,11 @@ public class OrderController {
      * @param pageSize
      * @return
      */
-    @ApiOperation("分页查询所有订单管理接口")
-    @GetMapping("/queryOrderPage.do")
+    @ApiOperation("分页查询所有历史订单管理接口")
+    @GetMapping("/queryOrderHistoryPage.do")
     public Result queryOrderPage(@RequestParam int page, @RequestParam int pageSize) {
-        log.info("查询历史订单的分页参数: page:{},pageSize:{}",page,pageSize);
-        Page<OrdersDto> ordersPage = ordersService.queryOrderPage(page, pageSize);
+        log.info("查询历史订单的分页参数: page:{},pageSize:{}", page, pageSize);
+        Page<OrdersDto> ordersPage = ordersService.queryOrderHistoryPage(page, pageSize);
         return Result.success(ordersPage);
     }
 
@@ -57,17 +57,31 @@ public class OrderController {
     }
 
     /**
-     * 分页查询订单
+     * 分页查询所有订单
+     *
      * @param page
      * @param pageSize
-     * @param number 订单号
-     * @param startTime 开始时间
-     * @param endTime 结束时间
+     * @param number    订单号
+     * @param beginTime 开始时间
+     * @param endTime   结束时间
      * @return com.raj.Vo.Result
      */
-    /*@GetMapping("/queryOrderPage.do")
-    public Result queryOrderPage(int page,int pageSize,String number,String startTime,String endTime){
-        ordersService.queryOrderPage()
-        return Result.success();
-    }*/
+    @GetMapping("/queryOrderPage.do")
+    public Result queryOrderPage(int page, int pageSize, String number, String beginTime, String endTime) {
+        log.info("查询订单的参数: page:{},pageSize:{},number:{},beginTime:{},endTime:{}", page, pageSize, number, beginTime, endTime);
+        Page<OrdersDto> ordersDtoPage = ordersService.queryOrderPage(page, pageSize, number, beginTime, endTime);
+        return Result.success(ordersDtoPage);
+    }
+
+    /**
+     * 订单派送
+     *
+     * @param orders
+     * @return
+     */
+    @PutMapping("/editOrderDetail.do")
+    public Result editOrderDetail(@RequestBody Orders orders) {
+        int editOrderDetail = ordersService.editOrderDetail(orders);
+        return editOrderDetail > 0 ? Result.success() : Result.error("派送失败");
+    }
 }

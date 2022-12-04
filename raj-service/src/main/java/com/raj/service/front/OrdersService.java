@@ -14,5 +14,9 @@ public interface OrdersService extends IService<Orders> {
 
     void saveOrders(Orders orders);
 
-    Page<OrdersDto> queryOrderPage(int page, int pageSize);
+    Page<OrdersDto> queryOrderHistoryPage(int page, int pageSize);
+
+    Page<OrdersDto> queryOrderPage(int page, int pageSize, String number, String beginTime, String endTime);
+
+    int editOrderDetail(Orders orders);
 }

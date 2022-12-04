@@ -253,7 +253,7 @@
                         str = '待付款'
                         break;
                     case 2:
-                        str = '正在派送'
+                        str = '待派送'
                         break;
                     case 3:
                         str = '已派送'
@@ -291,6 +291,8 @@
                     }).catch(err => {
                         this.$message.error('请求出错了：' + err)
                     })
+                }).catch(() => {
+                    // 添加错误捕获
                 })
                 const params = {
                     status,
