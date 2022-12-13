@@ -1,21 +1,4 @@
-2022-12-03 09:07:15.797  INFO 1796 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/**, /common/**, /employee/login.do, /favicon.ico, /front/**, /user/sendCode.do, /user/login.do, /doc.html, /webjars/**, /swagger-resources, /v2/api-docs]
-2022-12-03 09:07:16.120  INFO 1796 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
-2022-12-03 09:07:16.592  INFO 1796 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
-2022-12-03 09:07:16.956  INFO 1796 --- [main] com.raj.config.MvcConfig                 : 加载静态资源映射
-2022-12-03 09:07:18.436  INFO 1796 --- [main] com.raj.front.service.OrderServiceTest   : Started OrderServiceTest in 10.576 seconds (JVM running for 12.36)
-2022-12-03 09:07:18.745  INFO 1796 --- [main] c.r.s.front.impl.OrdersServiceImpl       : 当前用户:User(id=1594943486342266881, name=null, phone=null, sex=null, idNumber=null, avatar=null, status=null, email=null)
-2022-12-03 09:07:19.407  INFO 1796 --- [main] ShardingSphere-SQL                       : Rule Type: sharding
-2022-12-03 09:07:19.407  INFO 1796 --- [main] ShardingSphere-SQL                       : Logic SQL: SELECT  id,name,image,user_id,dish_id,setmeal_id,dish_flavor,number,amount,create_time  FROM t_shopping_cart 
- 
- WHERE (user_id = ?)
-2022-12-03 09:07:19.407  INFO 1796 --- [main] ShardingSphere-SQL                       : SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[]), routeConditions=Conditions(orCondition=OrCondition(andConditions=[])), encryptConditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[], parametersIndex=1, logicSQL=SELECT  id,name,image,user_id,dish_id,setmeal_id,dish_flavor,number,amount,create_time  FROM t_shopping_cart 
- 
- WHERE (user_id = ?))), containStar=false, firstSelectItemStartIndex=8, selectListStopIndex=85, groupByLastIndex=0, items=[CommonSelectItem(expression=id, alias=Optional.absent()), CommonSelectItem(expression=name, alias=Optional.absent()), CommonSelectItem(expression=image, alias=Optional.absent()), CommonSelectItem(expression=user_id, alias=Optional.absent()), CommonSelectItem(expression=dish_id, alias=Optional.absent()), CommonSelectItem(expression=setmeal_id, alias=Optional.absent()), CommonSelectItem(expression=dish_flavor, alias=Optional.absent()), CommonSelectItem(expression=number, alias=Optional.absent()), CommonSelectItem(expression=amount, alias=Optional.absent()), CommonSelectItem(expression=create_time, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subqueryStatement=null, subqueryStatements=[], subqueryConditions=[])
-2022-12-03 09:07:19.407  INFO 1796 --- [main] ShardingSphere-SQL                       : Actual SQL: master ::: SELECT  id,name,image,user_id,dish_id,setmeal_id,dish_flavor,number,amount,create_time  FROM t_shopping_cart 
- 
- WHERE (user_id = ?) ::: [1594943486342266881]
-2022-12-03 09:07:19.466  INFO 1796 --- [main] c.r.s.front.impl.OrdersServiceImpl       : 查询到的购物车集合:[]
-2022-12-03 09:07:19.535  INFO 1796 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-12-03 09:07:19.545  INFO 1796 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-12-03 09:07:19.546  INFO 1796 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closing ...
-2022-12-03 09:07:19.546  INFO 1796 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2022-12-13 14:38:33.736  INFO 17860 --- [main] com.raj.config.TxAnoConfig               : 加载事务拦截器
+2022-12-13 14:38:33.742  INFO 17860 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-13 14:38:33.751  INFO 17860 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
+2022-12-13 14:38:33.758  INFO 17860 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
