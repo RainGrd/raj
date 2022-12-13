@@ -2,3 +2,8 @@
 2022-12-13 14:38:33.742  INFO 17860 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'txAdvice' of type [org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2022-12-13 14:38:33.751  INFO 17860 --- [main] com.raj.config.TxAnoConfig               : 加载切面拦截规则
 2022-12-13 14:38:33.758  INFO 17860 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultPointcutAdvisor' of type [org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-13 14:38:38.784  INFO 17860 --- [main] com.raj.config.MvcConfig                 : 放行路径:[/backend/**, /common/**, /employee/login.do, /favicon.ico, /front/**, /user/sendCode.do, /user/login.do, /doc.html, /webjars/**, /swagger-resources, /v2/api-docs]
+2022-12-13 14:38:39.056  INFO 17860 --- [main] com.raj.config.RedisConfig               : 加载Redis缓存管理器...
+2022-12-13 14:38:39.547  INFO 17860 --- [main] com.raj.config.MvcConfig                 : 加载消息转换器...
+2022-12-13 14:38:39.893  INFO 17860 --- [main] com.raj.config.MvcConfig                 : 加载静态资源映射
+2022-12-13 14:38:41.538  INFO 17860 --- [main] com.raj.front.service.UserServiceTest    : Started UserServiceTest in 12.264 seconds (JVM running for 14.219)
